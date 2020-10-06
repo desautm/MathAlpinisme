@@ -4,7 +4,7 @@
     <title>La falaise de la mort</title>
     <meta charset="utf-8" />
     <meta name="author" content="Marc-André Désautels" />
-    <meta name="date" content="2020-10-05" />
+    <meta name="date" content="2020-10-06" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
   </head>
@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 ## ou les mathématiques en alpinisme
 ### Marc-André Désautels
 ### Cégep Saint-Jean-sur-Richelieu
-### 2020-10-05
+### 2020-10-06
 
 ---
 
@@ -62,6 +62,15 @@ background-image:url(https://www.mntnfilm.com/img/cache/1251-principal-take-it-t
 ---
 class: middle, center
 
+&lt;img src="index_files/figure-html/assureur-grimpeur-avant-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+---
+class: middle, center
+
+&lt;img src="index_files/figure-html/assureur-grimpeur-apres-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle, center
+
 &lt;img src="index_files/figure-html/assureur-grimpeur-1.png" width="50%" style="display: block; margin: auto;" /&gt;
 
 ---
@@ -85,7 +94,152 @@ class: center, middle, inverse
 
 ---
 
+# Les hypothèses
+
+- Soit une corde élastique de longueur `\(L\)` (avant l’étirement) entre un grimpeur et son assureur.
+
+- Si la corde n'est pas élastique, le facteur de chute ne s'applique pas.
+
+- Nous nous intéressons seulement à la chute du grimpeur et nous omettons la possibilité qu'il se heurte à des roches, etc.
+
+---
+
 &lt;img src="index_files/figure-html/grimpeur-chute-libre-1.png" width="42.5%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# La loi de Hooke
+
+- Le mode de déformation le plus simple est la traction (étirement) ou la compression selon un axe. 
+
+- Pour de petites déformations, la variation de longueur ($\Delta x$) est proportionnelle à la force de traction/compression `\(F_c\)` générée par le ressort.
+
+- `\(F_c = k \Delta x\)`
+
+---
+background-image:url(https://upload.wikimedia.org/wikipedia/commons/f/fc/Hookes-law-springs.png)
+background-size: contain
+
+???
+
+Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hookes-law-springs.png)
+
+---
+
+# La loi de Hooke
+
+- La force qu’exerce la corde sur le grimpeur dépend de la longueur avec laquelle celle-ci s’est
+étirée par rapport à sa longueur initiale. 
+
+- Supposons que la longueur de la corde à un instant `\(t\)` est donnée par `\(L_e\)`, où `\(L_e &gt; L\)`. 
+
+- Selon la loi de Hooke, la force `\(F_c\)` exercée par la corde est proportionnelle à l’étirement sur la longueur initiale de la corde, c’est-à-dire :
+$$
+F_c = k\left(\frac{L_e-L}{L}\right)
+$$
+
+---
+class: middle, inverse
+
+## *Nous voulons démontrer quelque chose, qui de prime abord, semble contre-intuitif.*
+
+---
+class: middle, inverse
+
+## *La force maximale ressentie par le grimpeur ne dépend pas de la hauteur de la chute mais bien du rapport entre la distance de la chute et la longueur totale de la  corde. Ce rapport, noté `\(\frac{D_T}{L}\)`, est appelé le facteur de chute (ce facteur de chute ne s'applique que dans le cas où la corde est élastique).*
+
+---
+class: inverse, center, middle
+
+# La modélisation du problème
+
+---
+
+&lt;img src="index_files/figure-html/modelisation-chute-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+Lorsque le grimpeur tombe en chute libre, jusqu'à une distance `\(D_C\)`, la seule force sur le grimpeur est la force de gravité. Par la seconde loi de Newton, la position du grimpeur est donc donnée par l'équation différentielle:
+
+`$$m\dfrac{d^2y}{dt^2} = mg$$`
+
+où `\(m\)` est la masse du grimpeur.
+
+---
+
+## Réécriture de la seconde loi de Newton
+
+$$
+`\begin{aligned}
+m\dfrac{d^2y}{dt^2} &amp;= m \dfrac{d}{dt}\underbrace{\left[\dfrac{dy}{dt}\right]}_{=v} \\
+&amp;= m\dfrac{dv}{dt} \\
+&amp;= m\dfrac{dv}{dy}\underbrace{\dfrac{dy}{dt}}_{=v} \\
+&amp;= mv \dfrac{dv}{dy}
+\end{aligned}`
+$$
+
+
+---
+
+## Résolution de l'équation différentielle pour la chute libre
+
+$$
+`\begin{aligned}
+m\dfrac{d^2y}{dt^2} &amp;= mg \\
+\dfrac{d^2y}{dt^2} &amp;= g \\
+v\dfrac{dv}{dy} &amp;= g \\
+\int vdv &amp;= \int gdy \\
+\dfrac{v^2}{2} &amp;= gy+C_1 \\
+v^2 &amp;= 2gy+C_2
+\end{aligned}`
+$$
+
+---
+
+## La constante d'intégration
+
+- Nous avons : `\(v^2=2gy+C_2\)`.
+
+- Puisque la vitesse du grimpeur au temps initial est nulle, nous avons donc `\(C_2 = 0\)`.
+
+- Puisque `\(v^2(y) = 2gy\)`, à la fin de la chute libre nous avons `\(v^2(D_C)=2gD_C\)`.
+
+- Nous aurions pu obtenir le même résultat en utilisant les énergies potentielles et cinétiques du grimpeur.
+
+---
+
+## Écriture de l'équation différentielle pour la chute retenue par la corde
+
+À partir du moment où la corde commence à se tendre, une seconde force entre en jeu, la force de Hooke. Puisque le mouvement se fait vers le bas, la force de Hooke va être dans la direction inverse, pour ralentir le mouvement du grimpeur. L'équation différentielle sera donc 
+`$$mv\dfrac{dv}{dy} = mg-\dfrac{k}{L}(y-D_C)$$`
+
+---
+
+## Résolution de l'équation différentielle pour la chute retenue par la corde
+
+$$
+`\begin{aligned}
+mv\dfrac{dv}{dy} &amp;= mg-\dfrac{k}{L}(y-D_C) \\
+\int vdv &amp;= \int\left(g-\dfrac{k}{mL}(y-D_C)\right)dy \\
+\dfrac{v^2}{2} &amp;= gy-\dfrac{k}{2mL}(y-D_C)^2+C_1 \\
+v^2 &amp;= 2gy-\dfrac{k}{mL}(y-D_C)^2+C_2
+\end{aligned}`
+$$
+---
+
+## La constante d'intégration
+
+La condition initiale de ce problème correspond à la vitesse du grimpeur après sa chute libre, c'est-à-dire lorsqu'il se trouve à `\(D_C\)`.
+
+$$
+`\begin{aligned}
+v^2(D_C) &amp;= 2gD_C-\dfrac{k}{mL}(D_C-D_C)^2+C_2 \\
+2gD_C &amp;= 2gD_C+C_2 \\
+C_2 &amp;= 0
+\end{aligned}`
+$$
+
+Le carré de la vitesse du grimpeur lorsque la corde s'étire est donc `\(v^2 = 2gy-\dfrac{k}{mL}(y-D_C)^2\)`.
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

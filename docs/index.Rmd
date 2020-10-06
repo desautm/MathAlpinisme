@@ -56,7 +56,7 @@ background-image:url(https://www.mntnfilm.com/img/cache/1251-principal-take-it-t
 ---
 class: middle, center
 
-```{tikz, echo=FALSE, out.width="50%", fig.align='center', label="assureur-grimpeur"}
+```{tikz, echo=FALSE, out.width="50%", fig.align='center', label="assureur-grimpeur-avant"}
 \def\grimpeur#1#2#3#4{
 \begin{scope}[shift={#1}, rotate=#2, scale=#4]
 	\tikzstyle{my style}=[line cap=round, rounded corners, line width=5pt, color = #3]
@@ -79,15 +79,87 @@ class: middle, center
 
 \begin{tikzpicture}
 
-\draw[fill,color=brown] (3,-5) rectangle (7,6);
+\draw[fill,color=brown,draw=black,thick] (3,-5) rectangle (7,6);
 \assureur{(1,-4)}{0}{black}{0.3}
 \grimpeur{(5,4)}{0}{black}{0.3}
-\grimpeur{(5,0)}{-45}{gray}{0.3}
 
 \draw[blue, line width=2pt] (0.75,-4)--(1,-4)--(1.7,-2.5)--(5,2)--(5,4);
+
+\foreach \x / \y  in {1/-4,5/4,5/2} \draw[red,fill] (\x,\y) circle (2pt);
+
+\end{tikzpicture}
+```
+---
+class: middle, center
+
+```{tikz, echo=FALSE, out.width="50%", fig.align='center', label="assureur-grimpeur-apres"}
+\def\grimpeur#1#2#3#4{
+\begin{scope}[shift={#1}, rotate=#2, scale=#4]
+	\tikzstyle{my style}=[line cap=round, rounded corners, line width=5pt, color = #3]
+    \draw[my style] (-1,-2)--(-2,0)--(0,0)--(0,2);
+    \draw[my style] (0,0)--(0,-4);
+    \draw[my style] (2,4)--(2,2)--(0,2)--(-1,4)--(0,6);
+    \draw[my style,fill] (0.5,3) circle (10pt);
+\end{scope} 
+}
+
+\def\assureur#1#2#3#4{
+\begin{scope}[shift={#1}, rotate=#2,scale=#4]
+	\tikzstyle{my style}=[line cap=round, rounded corners, line width=5pt, color = #3]
+    \draw[my style] (-1,-4)--(0,-2)--(0,0)--(0,2)--(-2,2)--(-1,0);
+    \draw[my style] (0,0)--(1,-2)--(2,-4);
+    \draw[my style] (0,2)--(2,3)--(2,5);
+    \draw[my style,fill] (-0.25,3.25) circle (10pt);
+\end{scope} 
+}
+
+\begin{tikzpicture}
+
+\draw[fill,color=brown,draw=black,thick] (3,-5) rectangle (7,6);
+\assureur{(1,-4)}{0}{black}{0.3}
+\grimpeur{(5,0)}{-45}{gray}{0.3}
+
+\draw[blue, line width=2pt] (0.75,-4)--(1,-4)--(1.7,-2.5)--(5,2);
 \draw[cyan, line width=2pt, dashed] (5,2)--(5,0);
 
-\foreach \x / \y  in {1/-4,5/4,5/0,5/2} \draw[red,fill] (\x,\y) circle (2pt);
+\foreach \x / \y  in {1/-4,5/0,5/2} \draw[red,fill] (\x,\y) circle (2pt);
+
+\end{tikzpicture}
+```
+
+---
+class: middle, center
+
+```{tikz, echo=FALSE, out.width="50%", fig.align='center', label="assureur-grimpeur"}
+\def\grimpeur#1#2#3#4{
+\begin{scope}[shift={#1}, rotate=#2, scale=#4]
+    \tikzstyle{my style}=[line cap=round, rounded corners, line width=5pt, color = #3]
+    \draw[my style] (-1,-2)--(-2,0)--(0,0)--(0,2);
+    \draw[my style] (0,0)--(0,-4);
+    \draw[my style] (2,4)--(2,2)--(0,2)--(-1,4)--(0,6);
+    \draw[my style,fill] (0.5,3) circle (10pt);
+\end{scope} 
+}
+
+\def\assureur#1#2#3#4{
+\begin{scope}[shift={#1}, rotate=#2,scale=#4]
+    \tikzstyle{my style}=[line cap=round, rounded corners, line width=5pt, color = #3]
+    \draw[my style] (-1,-4)--(0,-2)--(0,0)--(0,2)--(-2,2)--(-1,0);
+    \draw[my style] (0,0)--(1,-2)--(2,-4);
+    \draw[my style] (0,2)--(2,3)--(2,5);
+    \draw[my style,fill] (-0.25,3.25) circle (10pt);
+\end{scope} 
+}
+
+\begin{tikzpicture}
+
+\draw[fill,color=brown, draw=black, thick] (3,-5) rectangle (7,6);
+\assureur{(1,-4)}{0}{black}{0.3}
+\grimpeur{(5,4)}{0}{black}{0.3}
+
+\draw[blue, line width=2pt] (0.75,-4)--(1,-4)--(1.7,-2.5)--(5,-2)--(5,4);
+
+\foreach \x / \y  in {1/-4,5/4,5/2,5/0,5/-2} \draw[red,fill] (\x,\y) circle (2pt);
 
 \end{tikzpicture}
 ```
@@ -110,6 +182,16 @@ class: center, middle
 class: center, middle, inverse
 
 # Le facteur de chute
+
+---
+
+# Les hypothèses
+
+- Soit une corde élastique de longueur $L$ (avant l’étirement) entre un grimpeur et son assureur.
+
+- Si la corde n'est pas élastique, le facteur de chute ne s'applique pas.
+
+- Nous nous intéressons seulement à la chute du grimpeur et nous omettons la possibilité qu'il se heurte à des roches, etc.
 
 ---
 
@@ -141,3 +223,191 @@ class: center, middle, inverse
 
 \end{tikzpicture}
 ```
+
+---
+
+# La loi de Hooke
+
+- Le mode de déformation le plus simple est la traction (étirement) ou la compression selon un axe. 
+
+- Pour de petites déformations, la variation de longueur ($\Delta x$) est proportionnelle à la force de traction/compression $F_c$ générée par le ressort.
+
+- $F_c = k \Delta x$
+
+---
+background-image:url(https://upload.wikimedia.org/wikipedia/commons/f/fc/Hookes-law-springs.png)
+background-size: contain
+
+???
+
+Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hookes-law-springs.png)
+
+---
+
+# La loi de Hooke
+
+- La force qu’exerce la corde sur le grimpeur dépend de la longueur avec laquelle celle-ci s’est
+étirée par rapport à sa longueur initiale. 
+
+- Supposons que la longueur de la corde à un instant $t$ est donnée par $L_e$, où $L_e > L$. 
+
+- Selon la loi de Hooke, la force $F_c$ exercée par la corde est proportionnelle à l’étirement sur la longueur initiale de la corde, c’est-à-dire :
+$$
+F_c = k\left(\frac{L_e-L}{L}\right)
+$$
+
+---
+class: middle, inverse
+
+## *Nous voulons démontrer quelque chose, qui de prime abord, semble contre-intuitif.*
+
+---
+class: middle, inverse
+
+## *La force maximale ressentie par le grimpeur ne dépend pas de la hauteur de la chute mais bien du rapport entre la distance de la chute et la longueur totale de la  corde. Ce rapport, noté $\frac{D_T}{L}$, est appelé le facteur de chute (ce facteur de chute ne s'applique que dans le cas où la corde est élastique).*
+
+---
+class: inverse, center, middle
+
+# La modélisation du problème
+
+---
+
+```{tikz, echo=FALSE, out.width="60%", fig.align='center', label="modelisation-chute"}
+\def\grimpeur#1#2#3#4{
+\begin{scope}[shift={#1}, rotate=#2, scale=#4]
+    \tikzstyle{my style}=[line cap=round, rounded corners, line width=3pt, color = #3]
+    \draw[my style] (-1,-2)--(-2,0)--(0,0)--(0,2);
+    \draw[my style] (0,0)--(0,-4);
+    \draw[my style] (2,4)--(2,2)--(0,2)--(-1,4)--(0,6);
+    \draw[my style,fill] (0.5,3) circle (10pt);
+\end{scope} 
+}
+
+\begin{tikzpicture}
+
+\draw[->] (-1,0)--(1,0) node[below] {$x$};
+\draw[<-] (0,-5)--(0,1) node[left] {$y$};
+
+\draw (-0.1,-3) node[left] {$D_C$} --(0.1,-3);
+\draw (-0.1,-4) node[left] {$D_T$} --(0.1,-4);
+
+\draw[<->] (0.4,-4)--(0.4,-3) node[midway,right] {Étirement};
+
+\grimpeur{(-2,0)}{0}{black}{0.2};
+\grimpeur{(-2,-3)}{-45}{gray}{0.2};
+\grimpeur{(-2,-4)}{-45}{gray}{0.2};
+
+\draw[blue, line width=2pt, opacity = 0.5] (-2,0)--(-2,-4);
+
+\foreach \x / \y  in {-2/0,-2/-3,-2/-4} \draw[red,fill] (\x,\y) circle (1.5pt);
+
+\end{tikzpicture}
+```
+
+---
+
+Lorsque le grimpeur tombe en chute libre, jusqu'à une distance $D_C$, la seule force sur le grimpeur est la force de gravité. Par la seconde loi de Newton, la position du grimpeur est donc donnée par l'équation différentielle:
+
+$$m\dfrac{d^2y}{dt^2} = mg$$
+
+où $m$ est la masse du grimpeur.
+
+---
+
+## Réécriture de la seconde loi de Newton
+
+$$
+\begin{aligned}
+m\dfrac{d^2y}{dt^2} &= m \dfrac{d}{dt}\underbrace{\left[\dfrac{dy}{dt}\right]}_{=v} \\
+&= m\dfrac{dv}{dt} \\
+&= m\dfrac{dv}{dy}\underbrace{\dfrac{dy}{dt}}_{=v} \\
+&= mv \dfrac{dv}{dy}
+\end{aligned}
+$$
+
+
+---
+
+## Résolution de l'équation différentielle pour la chute libre
+
+$$
+\begin{aligned}
+m\dfrac{d^2y}{dt^2} &= mg \\
+\dfrac{d^2y}{dt^2} &= g \\
+v\dfrac{dv}{dy} &= g \\
+\int vdv &= \int gdy \\
+\dfrac{v^2}{2} &= gy+C_1 \\
+v^2 &= 2gy+C_2
+\end{aligned}
+$$
+
+---
+
+## La constante d'intégration
+
+- Nous avons : $v^2=2gy+C_2$.
+
+- Puisque la vitesse du grimpeur au temps initial est nulle, nous avons donc $C_2 = 0$.
+
+- Puisque $v^2(y) = 2gy$, à la fin de la chute libre nous avons $v^2(D_C)=2gD_C$.
+
+- Nous aurions pu obtenir le même résultat en utilisant les énergies potentielles et cinétiques du grimpeur.
+
+---
+
+## Écriture de l'équation différentielle pour la chute retenue par la corde
+
+À partir du moment où la corde commence à se tendre, une seconde force entre en jeu, la force de Hooke. Puisque le mouvement se fait vers le bas, la force de Hooke va être dans la direction inverse, pour ralentir le mouvement du grimpeur. L'équation différentielle sera donc 
+$$mv\dfrac{dv}{dy} = mg-\dfrac{k}{L}(y-D_C)$$
+
+---
+
+## Résolution de l'équation différentielle pour la chute retenue par la corde
+
+$$
+\begin{aligned}
+mv\dfrac{dv}{dy} &= mg-\dfrac{k}{L}(y-D_C) \\
+\int vdv &= \int\left(g-\dfrac{k}{mL}(y-D_C)\right)dy \\
+\dfrac{v^2}{2} &= gy-\dfrac{k}{2mL}(y-D_C)^2+C_1 \\
+v^2 &= 2gy-\dfrac{k}{mL}(y-D_C)^2+C_2
+\end{aligned}
+$$
+---
+
+## La constante d'intégration
+
+La condition initiale de ce problème correspond à la vitesse du grimpeur après sa chute libre, c'est-à-dire lorsqu'il se trouve à $D_C$.
+
+$$
+\begin{aligned}
+v^2(D_C) &= 2gD_C-\dfrac{k}{mL}(D_C-D_C)^2+C_2 \\
+2gD_C &= 2gD_C+C_2 \\
+C_2 &= 0
+\end{aligned}
+$$
+
+Le carré de la vitesse du grimpeur lorsque la corde s'étire est donc $v^2 = 2gy-\dfrac{k}{mL}(y-D_C)^2$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
