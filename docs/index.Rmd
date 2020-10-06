@@ -1,9 +1,9 @@
 ---
 title: "La falaise de la mort"
 subtitle: "ou les mathématiques en alpinisme"
-author: "Marc-André Désautels"
+author: "[Marc-André Désautels](https://madesautels.rbind.io)"
 institute: "Cégep Saint-Jean-sur-Richelieu"
-date: "`r Sys.Date()`"
+date: "10 décembre 2020 <br><br> Présentation disponible à https://desautm.github.io/MathAlpinisme <br> Code disponible à  https://github.com/desautm/MathAlpinisme"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -390,9 +390,171 @@ $$
 Le carré de la vitesse du grimpeur lorsque la corde s'étire est donc $v^2 = 2gy-\dfrac{k}{mL}(y-D_C)^2$.
 
 
+---
+class:inverse, center, middle
 
+# Les divers facteurs de chute
 
+---
 
+```{tikz, echo=FALSE, out.width="75%", fig.align='center', label="facteurs-chute"}
+\def\grimpeur#1#2#3#4{
+\begin{scope}[shift={#1}, rotate=#2, scale=#4]
+    \tikzstyle{my style}=[line cap=round, rounded corners, line width=3pt, color = #3]
+    \draw[my style] (-1,-2)--(-2,0)--(0,0)--(0,2);
+    \draw[my style] (0,0)--(0,-4);
+    \draw[my style] (2,4)--(2,2)--(0,2)--(-1,4)--(0,6);
+    \draw[my style,fill] (0.5,3) circle (10pt);
+\end{scope} 
+}
+
+\def\parabola#1#2#3#4#5#6{
+\draw[blue, line width = 1.5pt] plot[smooth,domain=0:1] (\x, {
+#2*(\x-#3)*(\x-#5)/((#1-#3)*(#1-#5))+#4*(\x-#1)*(\x-#5)/((#3-#1)*(#3-#5))+#6*(\x-#1)*(\x-#3)/((#5-#1)*(#5-#3))	
+});
+}
+
+\def\fcdeux#1{
+\begin{scope}[shift={#1}]
+\grimpeur{(1,4)}{0}{black}{0.2};
+\parabola{0}{0}{1}{4}{0.65}{2};
+\grimpeur{(0,-4)}{-45}{gray}{0.2};
+\draw[blue, dashed, line width = 1.5pt] (0,0)--(0,-4);
+\foreach \x / \y  in {1/4,0/0,0/-4} \draw[red,fill] (\x,\y) circle (1pt);
+\node[below] at (0,-5) {FC=$2$};
+\end{scope}
+}
+
+\def\fctroissurdeux#1{
+\begin{scope}[shift={#1}]
+\grimpeur{(1,2)}{0}{black}{0.2};
+\parabola{0}{0}{1}{2}{0.25}{-0.75};
+\grimpeur{(0,-4)}{-45}{gray}{0.2};
+\draw[blue, dashed, line width = 1.5pt] (0,0)--(0,-4);
+\foreach \x / \y  in {1/2,0/0,0/-4} \draw[red,fill] (\x,\y) circle (1pt);
+\node[below] at (0,-5) {FC=$\frac{3}{2}$};
+\end{scope}
+}
+
+\def\fcun#1{
+\begin{scope}[shift={#1}]
+\grimpeur{(1,0)}{0}{black}{0.2};
+\parabola{0}{0}{1}{0}{0.5}{-2};
+\grimpeur{(0,-4)}{-45}{gray}{0.2};
+\draw[blue, dashed, line width = 1.5pt] (0,0)--(0,-4);
+\foreach \x / \y  in {1/0,0/0,0/-4} \draw[red,fill] (\x,\y) circle (1pt);
+\node[below] at (0,-5) {FC=$1$};
+\end{scope}
+}
+
+\def\fcunsurdeux#1{
+\begin{scope}[shift={#1}]
+\grimpeur{(1,-2)}{0}{black}{0.2};
+\parabola{0}{0}{1}{-2}{0.5}{-2.75};
+\grimpeur{(0,-4)}{-45}{gray}{0.2};
+\draw[blue, dashed, line width = 1.5pt] (0,0)--(0,-4);
+\foreach \x / \y  in {1/-2,0/0,0/-4} \draw[red,fill] (\x,\y) circle (1pt);
+\node[below] at (0,-5) {FC=$\frac{1}{2}$};
+\end{scope}
+}
+
+\def\fczero#1{
+\begin{scope}[shift={#1}]
+\grimpeur{(0,-4)}{0}{black}{0.2};
+\draw[blue, line width = 1.5pt] (0,0)--(0,-4);
+\foreach \x / \y  in {0/-4,0/0,0/-4} \draw[red,fill] (\x,\y) circle (1pt);
+\node[below] at (0,-5) {FC=$0$};
+\end{scope}
+}
+
+\begin{tikzpicture}
+
+\draw[->] (-1,-5)--(-1,6);
+\foreach \y in {-1,-0.5,0,0.5,1} {
+	\draw (-1.1,4*\y) node[left] {\y} --(-0.9,4*\y);
+	\draw[dashed] (-0.9,4*\y)--(8.5,4*\y);
+}
+
+\fcdeux{(0,0)};
+\fctroissurdeux{(2,0)};
+\fcun{(4,0)};
+\fcunsurdeux{(6,0)};
+\fczero{(8,0)};
+
+\end{tikzpicture}
+```
+
+---
+class:middle, center, inverse
+
+# Facteur de chute de $2$
+
+---
+
+```{tikz, echo=FALSE, out.width="55%", fig.align='center', label="facteurs-chute-2"}
+\def\grimpeur#1#2#3#4{
+\begin{scope}[shift={#1}, rotate=#2, scale=#4]
+    \tikzstyle{my style}=[line cap=round, rounded corners, line width=3pt, color = #3]
+    \draw[my style] (-1,-2)--(-2,0)--(0,0)--(0,2);
+    \draw[my style] (0,0)--(0,-4);
+    \draw[my style] (2,4)--(2,2)--(0,2)--(-1,4)--(0,6);
+    \draw[my style,fill] (0.5,3) circle (10pt);
+\end{scope} 
+}
+
+\def\parabola#1#2#3#4#5#6{
+\draw[blue, line width = 1.5pt] plot[smooth,domain=0:1] (\x, {
+#2*(\x-#3)*(\x-#5)/((#1-#3)*(#1-#5))+#4*(\x-#1)*(\x-#5)/((#3-#1)*(#3-#5))+#6*(\x-#1)*(\x-#3)/((#5-#1)*(#5-#3))	
+});
+}
+
+\def\fcdeuxA#1{
+\begin{scope}[shift={#1}]
+\grimpeur{(1,4)}{0}{black}{0.2};
+\parabola{0}{0}{1}{4}{0.65}{2};
+\grimpeur{(0,-4)}{-45}{gray}{0.2};
+\draw[blue, dashed, line width = 1.5pt] (0,0)--(0,-4);
+\foreach \x / \y  in {1/4,0/0,0/-4} \draw[red,fill] (\x,\y) circle (1pt);
+\node[below] at (0,-5) {FC=$2$};
+\end{scope}
+}
+
+\def\fcdeuxB#1{
+\begin{scope}[shift={#1}]
+\grimpeur{(1,2)}{0}{black}{0.2};
+\parabola{0}{0}{1}{2}{0.5}{0.25};
+\grimpeur{(0,-2)}{-45}{gray}{0.2};
+\draw[blue, dashed, line width = 1.5pt] (0,0)--(0,-2);
+\foreach \x / \y  in {1/2,0/0,0/-2} \draw[red,fill] (\x,\y) circle (1pt);
+\node[below] at (0,-5) {FC=$2$};
+\end{scope}
+}
+
+\def\fcdeuxC#1{
+\begin{scope}[shift={#1}]
+\grimpeur{(1,1)}{0}{black}{0.2};
+\parabola{0}{0}{1}{1}{0.5}{0.25};
+\grimpeur{(0,-1)}{-45}{gray}{0.2};
+\draw[blue, dashed, line width = 1.5pt] (0,0)--(0,-1);
+\foreach \x / \y  in {1/1,0/0,0/-1} \draw[red,fill] (\x,\y) circle (1pt);
+\node[below] at (0,-5) {FC=$2$};
+\end{scope}
+}
+
+\begin{tikzpicture}
+
+\draw[->] (-1,-5)--(-1,6);
+\foreach \y in {-1,-0.5,0,0.5,1,0.25,-0.25} {
+	\draw (-1.1,4*\y) node[left] {\y} --(-0.9,4*\y);
+	\draw[dashed] (-0.9,4*\y)--(5.5,4*\y);
+}
+
+\fcdeuxA{(0,0)};
+\fcdeuxB{(2,0)};
+\fcdeuxC{(4,0)};
+
+\end{tikzpicture}
+```
 
 
 
