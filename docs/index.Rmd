@@ -6,14 +6,21 @@ institute: "Cégep Saint-Jean-sur-Richelieu"
 date: "10 décembre 2020 <br><br> Présentation disponible à https://desautm.github.io/MathAlpinisme <br> Code disponible à  https://github.com/desautm/MathAlpinisme"
 output:
   xaringan::moon_reader:
+    chakra: libs/remark-latest.min.js
     lib_dir: libs
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+      slideNumberFormat: "%current%"
 ---
+
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "tachyons"))
 ```
 
 class: inverse, middle
@@ -31,6 +38,7 @@ class: inverse, middle
 - [Take it to the limit](https://www.imdb.com/title/tt0251422/?ref_=fn_al_tt_2)
 
 ### *Nous préférions vous en avertir*
+
 ---
 background-image:url(https://cdn-0.ultimateactionmovies.com/wp-content/uploads/2018/11/Stallone-Cliffhanger.jpg)
 background-size: contain
@@ -93,6 +101,8 @@ class: middle, center
 class: middle, center
 
 ```{tikz, echo=FALSE, out.width="50%", fig.align='center', label="assureur-grimpeur-apres"}
+\usetikzlibrary{calc,shapes.callouts}
+
 \def\grimpeur#1#2#3#4{
 \begin{scope}[shift={#1}, rotate=#2, scale=#4]
 	\tikzstyle{my style}=[line cap=round, rounded corners, line width=5pt, color = #3]
@@ -123,6 +133,8 @@ class: middle, center
 \draw[cyan, line width=2pt, dashed] (5,2)--(5,0);
 
 \foreach \x / \y  in {1/-4,5/0,5/2} \draw[red,fill] (\x,\y) circle (2pt);
+
+\node[ellipse callout, draw,callout relative pointer={(-0.25,-0.8)}] at (1.25,-1.5) {OUF!};
 
 \end{tikzpicture}
 ```
@@ -264,7 +276,7 @@ class: middle, inverse
 ---
 class: middle, inverse
 
-## *La force maximale ressentie par le grimpeur ne dépend pas de la hauteur de la chute mais bien du rapport entre la distance de la chute et la longueur totale de la  corde. Ce rapport, noté $\frac{D_T}{L}$, est appelé le facteur de chute (ce facteur de chute ne s'applique que dans le cas où la corde est élastique).*
+## *La force maximale ressentie par le grimpeur ne dépend pas de la hauteur de la chute mais bien du rapport entre la distance de la chute et la longueur totale de la  corde. Ce rapport, noté $\dfrac{D_T}{L}$, est appelé le facteur de chute.*
 
 ---
 class: inverse, center, middle
@@ -307,15 +319,19 @@ class: inverse, center, middle
 
 ---
 
+## La seconde loi de Newton
+
 Lorsque le grimpeur tombe en chute libre, jusqu'à une distance $D_C$, la seule force sur le grimpeur est la force de gravité. Par la seconde loi de Newton, la position du grimpeur est donc donnée par l'équation différentielle:
 
 $$m\dfrac{d^2y}{dt^2} = mg$$
 
-où $m$ est la masse du grimpeur.
+où $m$ est la masse du grimpeur et $g$ la constante gravitationnelle avec $g\approx 9,81 \ m/s^2$.
 
 ---
 
 ## Réécriture de la seconde loi de Newton
+
+--
 
 $$
 \begin{aligned}
@@ -330,6 +346,8 @@ $$
 ---
 
 ## Résolution de l'équation différentielle pour la chute libre
+
+--
 
 $$
 \begin{aligned}
@@ -365,6 +383,8 @@ $$mv\dfrac{dv}{dy} = mg-\dfrac{k}{L}(y-D_C)$$
 
 ## Résolution de l'équation différentielle pour la chute retenue par la corde
 
+--
+
 $$
 \begin{aligned}
 mv\dfrac{dv}{dy} &= mg-\dfrac{k}{L}(y-D_C) \\
@@ -389,6 +409,32 @@ $$
 
 Le carré de la vitesse du grimpeur lorsque la corde s'étire est donc $v^2 = 2gy-\dfrac{k}{mL}(y-D_C)^2$.
 
+---
+
+Nous voulons maintenant évaluer cette vitesse lorsque $y=D_T$. À cet endroit, la vitesse est nulle, car la chute du grimpeur est terminée et donc:
+$$
+\begin{aligned}
+v^2 &= 2gy-\dfrac{k}{mL}(y-D_C)^2 \\
+v^2(D_T) &= 2gD_T-\dfrac{k}{mL}(D_T-D_C)^2 \\
+0 &= 2gD_T-\dfrac{k}{mL}(D_T-D_C)^2 \\
+(D_T-D_C)^2 &= \dfrac{2gmLD_T}{k} \\
+D_T-D_C &= \sqrt{\dfrac{2gmLD_T}{k}}
+\end{aligned}
+$$
+
+---
+
+Par la loi de Hooke, nous avons donc que la force ressentie par le grimpeur tout en bas de sa chute est donnée par:
+
+$$
+\begin{aligned}
+F_c &= k\left(\dfrac{L_e-L}{L}\right) \\
+&= k\left(\dfrac{D_T-D_C}{L}\right) \\
+&= \dfrac{k}{L}\sqrt{\dfrac{2gmLD_T}{k}} \\
+&= \sqrt{\dfrac{2gmkD_T}{L}} \\
+&= \sqrt{2gmk\left(\dfrac{D_T}{L}\right)}
+\end{aligned}
+$$
 
 ---
 class:inverse, center, middle
@@ -555,6 +601,38 @@ class:middle, center, inverse
 
 \end{tikzpicture}
 ```
+
+---
+
+## Facteur de chute de $\frac{1}{2}$
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/FQke1MenIGY?start=11" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+
+## Facteur de chute de $1$
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/FQke1MenIGY?start=35" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+
+## Une corde élastique ou non?
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/FQke1MenIGY?start=61" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+class:middle, center, inverse
+
+# Le design et le test des cordes d'escalade
+
+
+---
+class:middle, center, inverse
+
+# Les coinceurs mécaniques
+
+---
+
 
 
 
