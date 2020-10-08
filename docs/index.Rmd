@@ -29,7 +29,7 @@ class: inverse, middle
 
 --
 
-### *Pour être en mesure d'apprécier à sa juste valeur cette présentation, vous devez connaître sur le bout de vos doigts les **meilleurs** films sur l'escalade jamais produits.*
+### *Pour être en mesure d'apprécier à sa juste valeur cette présentation, vous devez connaître sur le bout de vos doigts les ~~**meilleurs**~~ **pires** films sur l'escalade jamais produits.*
 
 --
 
@@ -205,6 +205,8 @@ class: center, middle, inverse
 
 - Nous nous intéressons seulement à la chute du grimpeur et nous omettons la possibilité qu'il se heurte à des roches, etc.
 
+- Nous omettons les forces de frottement que subit la corde en passant dans les mousquetons, etc.
+
 ---
 
 ```{tikz, echo=FALSE, out.width="42.5%", fig.align='center', label="grimpeur-chute-libre"}
@@ -242,7 +244,7 @@ class: center, middle, inverse
 
 - Le mode de déformation le plus simple est la traction (étirement) ou la compression selon un axe. 
 
-- Pour de petites déformations, la variation de longueur ($\Delta x$) est proportionnelle à la force de traction/compression $F_c$ générée par le ressort.
+- Pour de petites déformations, la variation de longueur $\Delta x$ est proportionnelle à la force de traction/compression $F_c$ générée par le ressort.
 
 - $F_c = k \Delta x$
 
@@ -621,6 +623,47 @@ class:middle, center, inverse
 <iframe width="800" height="450" src="https://www.youtube.com/embed/FQke1MenIGY?start=61" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
+class: inverse, center, middle
+
+# L'escalade intérieure
+
+---
+
+```{tikz, echo=FALSE, out.width="50%", fig.align='center', label="facteur-chute-0"}
+\def\grimpeur#1#2#3#4{
+\begin{scope}[shift={#1}, rotate=#2, scale=#4]
+    \tikzstyle{my style}=[line cap=round, rounded corners, line width=5pt, color = #3]
+    \draw[my style] (-1,-2)--(-2,0)--(0,0)--(0,2);
+    \draw[my style] (0,0)--(0,-4);
+    \draw[my style] (2,4)--(2,2)--(0,2)--(-1,4)--(0,6);
+    \draw[my style,fill] (0.5,3) circle (10pt);
+\end{scope} 
+}
+
+\def\assureur#1#2#3#4{
+\begin{scope}[shift={#1}, rotate=#2,scale=#4]
+    \tikzstyle{my style}=[line cap=round, rounded corners, line width=5pt, color = #3]
+    \draw[my style] (-1,-4)--(0,-2)--(0,0)--(0,2)--(-2,2)--(-1,0);
+    \draw[my style] (0,0)--(1,-2)--(2,-4);
+    \draw[my style] (0,2)--(2,3)--(2,5);
+    \draw[my style,fill] (-0.25,3.25) circle (10pt);
+\end{scope} 
+}
+
+\begin{tikzpicture}
+
+\draw[fill,color=brown,draw=black,thick] (3,-5) rectangle (7,6);
+\assureur{(1,-4)}{0}{black}{0.3}
+\grimpeur{(5,2)}{0}{black}{0.3}
+
+\draw[blue, line width=2pt] (0.75,-4)--(1,-4)--(5,6)--(5,2);
+
+\foreach \x / \y  in {1/-4,5/6,5/2} \draw[red,fill] (\x,\y) circle (2pt);
+
+\end{tikzpicture}
+```
+
+---
 class:middle, center, inverse
 
 # Le design et le test des cordes d'escalade
@@ -633,12 +676,54 @@ class:middle, center, inverse
 
 ---
 
+## Définition
 
+.pull-left[
+Un coinceur mécanique, ou coinceur à came, est un équipement de protection pour
+l’escalade ou l’alpinisme. Il consiste en deux, trois, ou quatre cames montées sur un
+axe commun ou deux axes adjacents, de manière que tirer sur l’axe force les cames
+à s’écarter. Il utilise le principe de l’arc-boutement.
+]
 
+.pull-right[
+![](https://upload.wikimedia.org/wikipedia/commons/0/08/Slcd.jpg)
+]
 
+---
+class:middle, center, inverse
 
+# L'équation du cabestan
 
+---
 
+background-image:url(https://upload.wikimedia.org/wikipedia/commons/2/2f/Capstan-nautical.jpg)
+background-size: contain
+
+???
+
+Image credit : https://commons.wikimedia.org/wiki/File:Capstan-nautical.jpg
+
+---
+
+## Définition
+
+Un cabestan est une espèce de treuil à axe vertical, dont le mouvement sert à enrouler et à dérouler un câble ou une corde
+
+---
+
+$$
+\dfrac{dT}{d\theta} = \mu T
+$$
+
+$$
+\begin{aligned}
+\dfrac{dT}{d\theta} &= \mu T \\
+\int \dfrac{dT}{T} &= \int \mu d\theta \\
+\ln|T| &= \mu \theta + C_1 \\
+T &= e^{\mu\theta+C_1} \\
+&= C_2 e^{\mu\theta}
+\end{aligned}
+$$
 
 
 

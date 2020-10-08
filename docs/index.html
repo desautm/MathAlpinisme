@@ -34,7 +34,7 @@ class: inverse, middle
 
 --
 
-### *Pour être en mesure d'apprécier à sa juste valeur cette présentation, vous devez connaître sur le bout de vos doigts les **meilleurs** films sur l'escalade jamais produits.*
+### *Pour être en mesure d'apprécier à sa juste valeur cette présentation, vous devez connaître sur le bout de vos doigts les ~~**meilleurs**~~ **pires** films sur l'escalade jamais produits.*
 
 --
 
@@ -109,6 +109,8 @@ class: center, middle, inverse
 
 - Nous nous intéressons seulement à la chute du grimpeur et nous omettons la possibilité qu'il se heurte à des roches, etc.
 
+- Nous omettons les forces de frottement que subit la corde en passant dans les mousquetons, etc.
+
 ---
 
 &lt;img src="index_files/figure-html/grimpeur-chute-libre-1.png" width="42.5%" style="display: block; margin: auto;" /&gt;
@@ -119,7 +121,7 @@ class: center, middle, inverse
 
 - Le mode de déformation le plus simple est la traction (étirement) ou la compression selon un axe. 
 
-- Pour de petites déformations, la variation de longueur ($\Delta x$) est proportionnelle à la force de traction/compression `\(F_c\)` générée par le ressort.
+- Pour de petites déformations, la variation de longueur `\(\Delta x\)` est proportionnelle à la force de traction/compression `\(F_c\)` générée par le ressort.
 
 - `\(F_c = k \Delta x\)`
 
@@ -320,6 +322,15 @@ class:middle, center, inverse
 &lt;iframe width="800" height="450" src="https://www.youtube.com/embed/FQke1MenIGY?start=61" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 
 ---
+class: inverse, center, middle
+
+# L'escalade intérieure
+
+---
+
+&lt;img src="index_files/figure-html/facteur-chute-0-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
 class:middle, center, inverse
 
 # Le design et le test des cordes d'escalade
@@ -331,6 +342,55 @@ class:middle, center, inverse
 # Les coinceurs mécaniques
 
 ---
+
+## Définition
+
+.pull-left[
+Un coinceur mécanique, ou coinceur à came, est un équipement de protection pour
+l’escalade ou l’alpinisme. Il consiste en deux, trois, ou quatre cames montées sur un
+axe commun ou deux axes adjacents, de manière que tirer sur l’axe force les cames
+à s’écarter. Il utilise le principe de l’arc-boutement.
+]
+
+.pull-right[
+![](https://upload.wikimedia.org/wikipedia/commons/0/08/Slcd.jpg)
+]
+
+---
+class:middle, center, inverse
+
+# L'équation du cabestan
+
+---
+
+background-image:url(https://upload.wikimedia.org/wikipedia/commons/2/2f/Capstan-nautical.jpg)
+background-size: contain
+
+???
+
+Image credit : https://commons.wikimedia.org/wiki/File:Capstan-nautical.jpg
+
+---
+
+## Définition
+
+Un cabestan est une espèce de treuil à axe vertical, dont le mouvement sert à enrouler et à dérouler un câble ou une corde
+
+---
+
+$$
+\dfrac{dT}{d\theta} = \mu T
+$$
+
+$$
+`\begin{aligned}
+\dfrac{dT}{d\theta} &amp;= \mu T \\
+\int \dfrac{dT}{T} &amp;= \int \mu d\theta \\
+\ln|T| &amp;= \mu \theta + C_1 \\
+T &amp;= e^{\mu\theta+C_1} \\
+&amp;= C_2 e^{\mu\theta}
+\end{aligned}`
+$$
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="libs/remark-latest.min.js"></script>
