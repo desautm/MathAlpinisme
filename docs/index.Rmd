@@ -717,6 +717,111 @@ background-size: contain
 Image credit : https://commons.wikimedia.org/wiki/File:Camalot_number_6.JPG
 
 ---
+
+## Principe de base
+
+Le principe de base du coinceur mécanique est le suivant. La force qui tire vers le bas permet
+de coincer encore plus fort le coinceur dans la fissure. Le frottement entre le coinceur et la
+paroi soutient le grimpeur.
+
+--
+
+.pull-left[
+```{tikz, echo=FALSE, out.width="100%", fig.align='center', label="coinceur-mecanique"}
+\def\coinceur#1#2#3#4{
+\begin{scope}[shift={#1},scale=#2]
+    \fill[blue!50!white,draw=blue,very thick,domain=#3:#4,samples=100]  plot ({1.2^(\x)*cos(\x r)},{1.2^(\x)*sin(\x r)}) -- cycle;
+\end{scope} 
+\begin{scope}[xscale=-1,shift={#1},scale=#2]
+    \fill[blue!50!white,draw=blue,very thick,domain=#3:#4,samples=100]  plot ({1.2^(\x)*cos(\x r)},{1.2^(\x)*sin(\x r)}) -- cycle;
+\end{scope}
+}
+
+\begin{tikzpicture}
+
+\draw[line width = 5pt, brown](-1.9,-3)--(-1.9,2);
+\draw[line width = 5pt, brown](1.9,-3)--(1.9,2);
+\coinceur{(0,0)}{1}{0}{5*pi/4};
+\draw[thick,dashed] (-1.9,-0.34)--(0,0)--(1.9,-0.34);
+
+
+\draw[->,very thick] (-1.9,-0.34)--(-1.9,0.66) node[midway,left] {$F_t$};
+\draw[->,very thick] (-1.9,-0.34)--(-2.9,-0.34) node[midway,below] {$F_n$};
+\draw[->,very thick] (-1.9,-0.34)--(-0.9,-0.34) node[midway,below] {$N$};
+
+\draw[->,very thick] (1.9,-0.34)--(1.9,0.66) node[midway,right] {$F_t$};
+\draw[->,very thick] (1.9,-0.34)--(2.9,-0.34) node[midway,below] {$F_n$};
+\draw[->,very thick] (1.9,-0.34)--(0.9,-0.34) node[midway,below] {$N$};
+
+\draw[->,very thick] (0,0)--(0,-2) node[below] {$F$};
+
+\draw[blue,fill] (0,0) circle (2pt);
+
+\end{tikzpicture}
+```
+]
+
+--
+
+.pull-right[
+Pour que le système soit en équilibre, il faut que la somme de toutes ces forces soit nulle.
+$$
+\begin{aligned}
+2F_t &= F \\
+F_n &= N
+\end{aligned}
+$$
+]
+
+---
+
+.pull-left[
+```{tikz, echo=FALSE, out.width="100%", fig.align='center', label="coinceur-mathematisation"}
+\begin{tikzpicture}
+
+\draw[draw=black,fill=brown] (1.55,-6) rectangle (4,1);
+
+\draw[fill=black] (0,0) circle (1.5pt);
+\draw[dashed, thick] (0,0)--(1.55,-1.55);
+
+\draw[thick] (1.55,-1.55)--(3,-3) node[pos=0.75, below left] {$F$}; 
+\draw[->,thick] (1.55,-1.55)--(3,-1.55) node[midway, above] {$F_n$};
+\draw[thick] (3,-1.55)--(3,-3) node[midway, right] {$F_t$};
+
+\draw[->,thick] (1.55,-1.55) --({0.5*(1.55+3)},{0.5*(-1.55-3)});
+\draw[->,thick] (3,-1.55) --({0.5*(3+3)},{0.5*(-3-1.55)});
+
+\draw (1.55,-1.55) ++(-45:0.5) arc (-45:-90:0.5) node[midway,below] {$\beta$};
+\draw (3,-3) ++(90:0.5) arc (90:135:0.5) node[midway,above] {$\beta$};
+
+\draw[blue,very thick,domain=-1.57:0,samples=100]  plot ({2.71828^(-\x)*cos(\x r)},{2.71828^(-\x)*sin(\x r)});
+
+\end{tikzpicture}
+```
+]
+
+.pull-right[
+La force $F$ peut être décomposée en une partie normale $F_n$ et une partie tangentielle $F_t$ à la paroi à l'endroit où le coinceur touche la paroi.
+$$
+\begin{aligned}
+\tan(\beta) &= \dfrac{F_n}{F_t} \\
+F_t &= F_n\cot(\beta)
+\end{aligned}
+$$
+]
+
+---
+
+## Le coefficient de friction
+
+
+Le coinceur reste en place en raison du coefficient de friction de la paroi, noté $\mu$. Il suffit que $F_t<\mu F_n$ pour que le coinceur ne glisse pas. En effet, si la force exercée par le grimpeur est plus petite que le force de frottement, le coinceur restera en place. Si la force de frottement était plus petite que la force exercée par le grimpeur, le coinceur glisserait de la paroi.
+
+Ceci implique que $F_n\cot(\beta)<\mu F_n$ et donc que $\cot(\beta)<\mu$. Puisque nous allons travailler avec des tangentes, il est préférable d'utiliser l'inégalité $\tan(\beta)>\frac{1}{\mu}$. Cette dernière inégalité guidera notre choix pour la forme des coinceurs à came.
+
+Puisque $\tan(\beta)$ doit toujours être strictement supérieur à $\frac{1}{\mu}$, il semble indiqué d'obliger l'angle $\beta$ à rester constant, c'est-à-dire $\tan(\beta)=K$. Ce n'est pas la seule façon de résoudre le problème mais c'est la plus simple car elle permet de garder une valeur constante dans notre équation différentielle. Nous voulons donc trouver la forme de coinceur qui permettra à cet angle de rester constant.
+
+---
 class:middle, center, inverse
 
 # L'équation du cabestan

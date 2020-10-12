@@ -384,6 +384,59 @@ background-size: contain
 Image credit : https://commons.wikimedia.org/wiki/File:Camalot_number_6.JPG
 
 ---
+
+## Principe de base
+
+Le principe de base du coinceur mécanique est le suivant. La force qui tire vers le bas permet
+de coincer encore plus fort le coinceur dans la fissure. Le frottement entre le coinceur et la
+paroi soutient le grimpeur.
+
+--
+
+.pull-left[
+&lt;img src="index_files/figure-html/coinceur-mecanique-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+--
+
+.pull-right[
+Pour que le système soit en équilibre, il faut que la somme de toutes ces forces soit nulle.
+$$
+`\begin{aligned}
+2F_t &amp;= F \\
+F_n &amp;= N
+\end{aligned}`
+$$
+]
+
+---
+
+.pull-left[
+&lt;img src="index_files/figure-html/coinceur-mathematisation-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+La force `\(F\)` peut être décomposée en une partie normale `\(F_n\)` et une partie tangentielle `\(F_t\)` à la paroi à l'endroit où le coinceur touche la paroi.
+$$
+`\begin{aligned}
+\tan(\beta) &amp;= \dfrac{F_n}{F_t} \\
+F_t &amp;= F_n\cot(\beta)
+\end{aligned}`
+$$
+]
+
+---
+
+## Le coefficient de friction
+
+
+Le coinceur reste en place en raison du coefficient de friction de la paroi, noté `\(\mu\)`. Il suffit que `\(F_t&lt;\mu F_n\)` pour que le coinceur ne glisse pas. En effet, si la force exercée par le grimpeur est plus petite que le force de frottement, le coinceur restera en place. Si la force de frottement était plus petite que la force exercée par le grimpeur, le coinceur glisserait de la paroi.
+
+Ceci implique que `\(F_n\cot(\beta)&lt;\mu F_n\)` et donc que `\(\cot(\beta)&lt;\mu\)`. Puisque nous allons travailler avec des tangentes, il est préférable d'utiliser l'inégalité `\(\tan(\beta)&gt;\frac{1}{\mu}\)`. Cette dernière inégalité guidera notre choix pour la forme des coinceurs à came.
+
+Puisque `\(\tan(\beta)\)` doit toujours être strictement supérieur à `\(\frac{1}{\mu}\)`, il semble indiqué d'obliger l'angle `\(\beta\)` à rester constant, c'est-à-dire `\(\tan(\beta)=K\)`. Ce n'est pas la seule façon de résoudre le problème mais c'est la plus simple car elle permet de garder une valeur constante dans notre équation différentielle. Nous voulons donc trouver la forme de coinceur qui permettra à cet angle de rester constant.
+
+---
 class:middle, center, inverse
 
 # L'équation du cabestan
