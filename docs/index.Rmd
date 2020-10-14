@@ -17,10 +17,17 @@ output:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  cache=TRUE
+)
 ```
 
 ```{r xaringanExtra, echo=FALSE}
 xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "tachyons"))
+```
+
+```{r broadcast, echo=FALSE}
+xaringanExtra::use_broadcast()
 ```
 
 class: inverse, middle
@@ -814,12 +821,92 @@ $$
 
 ## Le coefficient de friction
 
+- Le coinceur reste en place en raison du coefficient de friction de la paroi, noté $\mu$. Il suffit que $F_t<\mu F_n$ pour que le coinceur ne glisse pas.
 
-Le coinceur reste en place en raison du coefficient de friction de la paroi, noté $\mu$. Il suffit que $F_t<\mu F_n$ pour que le coinceur ne glisse pas. En effet, si la force exercée par le grimpeur est plus petite que le force de frottement, le coinceur restera en place. Si la force de frottement était plus petite que la force exercée par le grimpeur, le coinceur glisserait de la paroi.
+- Ceci implique que $F_n\cot(\beta)<\mu F_n$ et donc que $\cot(\beta)<\mu$. Puisque nous allons travailler avec des tangentes, il est préférable d'utiliser l'inégalité $\tan(\beta)>\frac{1}{\mu}$.
 
-Ceci implique que $F_n\cot(\beta)<\mu F_n$ et donc que $\cot(\beta)<\mu$. Puisque nous allons travailler avec des tangentes, il est préférable d'utiliser l'inégalité $\tan(\beta)>\frac{1}{\mu}$. Cette dernière inégalité guidera notre choix pour la forme des coinceurs à came.
+- Puisque $\tan(\beta)$ doit toujours être strictement supérieur à $\frac{1}{\mu}$, il semble indiqué d'obliger l'angle $\beta$ à rester constant, c'est-à-dire $\tan(\beta)=K$. 
 
-Puisque $\tan(\beta)$ doit toujours être strictement supérieur à $\frac{1}{\mu}$, il semble indiqué d'obliger l'angle $\beta$ à rester constant, c'est-à-dire $\tan(\beta)=K$. Ce n'est pas la seule façon de résoudre le problème mais c'est la plus simple car elle permet de garder une valeur constante dans notre équation différentielle. Nous voulons donc trouver la forme de coinceur qui permettra à cet angle de rester constant.
+- Ce n'est pas la seule façon de résoudre le problème mais c'est la plus simple car elle permet de garder une valeur constante dans notre équation différentielle. Nous voulons donc trouver la forme de coinceur qui permettra à cet angle de rester constant.
+
+---
+class:middle
+
+.pull-left[
+```{tikz, echo=FALSE, out.width="100%", fig.align='center', label="coinceur-mathematisation-rotation"}
+\begin{tikzpicture}[scale=4]
+
+\draw[->] (-0.1,0)--(1.5,0) node[below] {$x$};
+\draw[->] (0,-0.25)--(0,1) node[left] {$y$};
+
+\draw[blue,very thick,domain=-0.25:1.25,samples=100]  plot ({1.2^(-\x)*cos(\x r)},{1.2^(-\x)*sin(\x r)}) node[above] {$y(x)$};
+
+\draw (0,0)--(1,0.6);
+\draw (1.16,0)--(0.4,0.93);
+
+\draw (0,0) ++(0:0.25) arc (0:31:0.25) node[midway,right] {$\theta$};
+\draw (0.8,0.43826) ++(44:0.15) arc (44:129:0.15) node[midway,above] {$\beta$};
+\draw (1.15,0) ++(0:0.15) arc (0:127:0.15) node[midway,above] {$\alpha$};
+
+\draw[fill] (0.777,0.4665) circle (0.35pt) node[right=5pt] {$(x,y)$};
+
+\end{tikzpicture}
+```
+]
+
+.pull-right[
+Nous remarquons que $\beta=\alpha-\theta$. Nous voulons que l'angle $\beta$ reste constant.
+
+De plus, nous remarquons que:
+$$
+\begin{aligned}
+\tan(\alpha) &= \dfrac{dy}{dx} \\
+\tan(\theta) &= \dfrac{y}{x}
+\end{aligned}
+$$
+Nous avons donc:
+$$
+\begin{aligned}
+\tan(\beta) &= \tan(\alpha-\theta) \\
+K &= \dfrac{\tan(\alpha)-\tan(\theta)}{1+\tan(\alpha)\tan(\theta)} \\
+&= \dfrac{\frac{dy}{dx}-\frac{y}{x}}{1+\frac{y}{x}\cdot \frac{dy}{dx}}
+\end{aligned}
+$$
+]
+
+---
+
+Pour résoudre l'équation différentielle à variables séparables précédente, nous allons poser le changement de variable $u=\frac{y}{x}$. Nous avons donc:
+$$
+\begin{aligned}
+y &= ux \\
+\frac{dy}{dx} &= u + x\frac{du}{dx}
+\end{aligned}
+$$
+
+Nous obtenons:
+$$
+\text{Arctan}\left(\frac{y}{x}\right)-\dfrac{K}{2}\ln\left|1+\left(\frac{y}{x}\right)^2\right| = K\ln|x|+C_1
+$$
+
+En posant 
+$$
+\begin{aligned}
+x &= r\cos(\theta) \\
+y &= r\sin(\theta)
+\end{aligned}
+$$
+
+Nous obtenons:
+$$
+r=Ce^{\tfrac{\theta}{\tan(\beta)}}
+$$
+
+---
+
+## Une spirale logarithmique
+
+
 
 ---
 class:middle, center, inverse
