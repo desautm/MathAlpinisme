@@ -774,6 +774,10 @@ $$
 F_n &= N
 \end{aligned}
 $$
+
+
+Habituellement, les coinceurs utilisent 4 cames et donc 
+$$4F_t=F$$
 ]
 
 ---
@@ -802,6 +806,8 @@ $$
 \end{tikzpicture}
 ```
 ]
+
+--
 
 .pull-right[
 La force $F$ peut être décomposée en une partie normale $F_n$ et une partie tangentielle $F_t$ à la paroi à l'endroit où le coinceur touche la paroi.
@@ -850,6 +856,8 @@ class:middle
 ```
 ]
 
+--
+
 .pull-right[
 Nous remarquons que $\beta=\alpha-\theta$. Nous voulons que l'angle $\beta$ reste constant.
 
@@ -880,10 +888,14 @@ y &= ux \\
 \end{aligned}
 $$
 
+--
+
 Nous obtenons:
 $$
 \text{Arctan}\left(\frac{y}{x}\right)-\dfrac{K}{2}\ln\left|1+\left(\frac{y}{x}\right)^2\right| = K\ln|x|+C_1
 $$
+
+--
 
 En posant 
 $$
@@ -892,6 +904,8 @@ x &= r\cos(\theta) \\
 y &= r\sin(\theta)
 \end{aligned}
 $$
+
+--
 
 Nous obtenons:
 $$
@@ -902,7 +916,94 @@ $$
 
 ## Une spirale logarithmique
 
+```{tikz, echo=FALSE, out.width="60%", fig.align='center', label="spirale-logarithmique"}
+\begin{tikzpicture}
 
+\foreach \r in {1,2,...,10} {
+	\draw[gray] (0,0) circle (\r cm);
+} 
+\foreach \angle in {0,pi/4,pi/2,3*pi/4,5*pi/4,3*pi/2,7*pi/4,3.1416} \draw[gray] (0,0)--(\angle r :10);
+
+\draw[blue,line width=4pt,domain=-2*pi:4*pi,samples=500]  plot ({1.2^(\x)*cos(\x r)},{1.2^(\x)*sin(\x r)});
+
+\end{tikzpicture}
+```
+
+---
+
+Maintenant que nous connaissons la forme à donner à nos coinceurs mécaniques, il nous faut trouver la valeur du paramètre $\beta$ à leur donner. Rappelons que $\beta$ correspond à l'angle entre le coinceur et la paroi. 
+
+Les manufacturiers utilisent plutôt l'angle complémentaire à $\beta$, noté $\gamma$, pour créer leurs coinceurs. Ainsi:
+$$
+\begin{aligned}
+\tan(\beta) &= \tan\left(\frac{\pi}{2}-\gamma\right) \\
+&= \dfrac{1}{\tan(\gamma)}
+\end{aligned}
+$$
+La spirale logarithmique est donc donnée par:
+$$
+\begin{aligned}
+r &= Ce^{\tfrac{\theta}{\tan(\beta)}} \\
+&= Ce^{\tan(\gamma)\cdot\theta}
+\end{aligned}
+$$
+
+Le paramètre $\gamma$ contrôle "l'ouverture" de la spirale logarithmique et permet de modifier la gamme de largeur du coinceur mécanique.
+
+---
+
+## L'ouverture du coinceur mécanique
+
+```{tikz, echo=FALSE, out.width="90%", fig.align='center', label="ouverture-coinceur"}
+\begin{tikzpicture}
+
+\def\C{1}
+
+\draw[->] (-4,0)--(11,0) node[below] {$x$};
+\draw[->] (0,-7) --(0,3) node[left] {$y$};
+
+\foreach \i in {-4,-3,...,10} \draw (\i,-0.1) node[below] {\i} --(\i,0.1);
+\foreach \j in {-7,-6,...,2} \draw (-0.1,\j) node[left] {\j} --(0.1,\j);
+
+\foreach \gamma in {5,10,15,20}{
+	\draw[blue,line width=2pt,domain=0:2*pi,samples=500]  plot ({\C*exp(tan(\gamma)*\x)*cos(\x r)},{\C*exp(tan(\gamma)*\x)*sin(\x r)}) node[above,black] {\gamma$^{\circ}$};
+}
+
+\end{tikzpicture}
+```
+
+---
+class:middle
+
+<iframe src="https://www.geogebra.org/classic/ekhmvsmr?embed" width="800" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
+---
+
+Pour que le coinceur reste en place, il faut que l'inégalité suivante soit respectée.
+$$
+\begin{aligned}
+\cot(\beta) &< \mu \\
+\dfrac{1}{\tan(\beta)} &< \mu \\
+\tan(\gamma) &< \mu
+\end{aligned}
+$$
+
+La force normale produite par le coinceur est donnée par:
+$$
+\begin{aligned}
+N &= \dfrac{F}{4\cot(\beta)} \\
+&= \dfrac{F}{4\tan(\gamma)}
+\end{aligned}
+$$
+
+En pratique, les manufacturiers utilisent des coinceurs à came avec un angle $\gamma$ d'environ $14^{\circ}$. Dans cette situation, la force normale est donnée par:
+$$
+\begin{aligned}
+N &= \dfrac{F}{4\tan(\gamma)} \\
+&= \dfrac{F}{4\tan(14^{\circ})} \\
+&\approx F
+\end{aligned}
+$$
 
 ---
 class:middle, center, inverse
