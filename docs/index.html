@@ -407,13 +407,10 @@ $$
 F_n &amp;= N
 \end{aligned}`
 $$
-
-
-Habituellement, les coinceurs utilisent 4 cames et donc 
-`$$4F_t=F$$`
 ]
 
 ---
+class: middle
 
 .pull-left[
 &lt;img src="index_files/figure-html/coinceur-mathematisation-1.png" width="100%" style="display: block; margin: auto;" /&gt;
@@ -435,13 +432,15 @@ $$
 
 ## Le coefficient de friction
 
-- Le coinceur reste en place en raison du coefficient de friction de la paroi, noté `\(\mu\)`. Il suffit que `\(F_t&lt;\mu F_n\)` pour que le coinceur ne glisse pas.
+- Le coinceur reste en place en raison du coefficient de friction de la paroi, noté `\(\mu\)`. 
 
-- Ceci implique que `\(F_n\cot(\beta)&lt;\mu F_n\)` et donc que `\(\cot(\beta)&lt;\mu\)`. Puisque nous allons travailler avec des tangentes, il est préférable d'utiliser l'inégalité `\(\tan(\beta)&gt;\frac{1}{\mu}\)`.
+- Il suffit que `\(F_t&lt;\mu F_n\)` pour que le coinceur ne glisse pas.
+
+- Ceci implique que `\(F_n\cot(\beta)&lt;\mu F_n\)` et donc que `\(\cot(\beta)&lt;\mu\)`. 
+- Puisque nous allons travailler avec des tangentes, il est préférable d'utiliser l'inégalité `\(\tan(\beta)&gt;\frac{1}{\mu}\)`.
 
 - Puisque `\(\tan(\beta)\)` doit toujours être strictement supérieur à `\(\frac{1}{\mu}\)`, il semble indiqué d'obliger l'angle `\(\beta\)` à rester constant, c'est-à-dire `\(\tan(\beta)=K\)`. 
 
-- Ce n'est pas la seule façon de résoudre le problème mais c'est la plus simple car elle permet de garder une valeur constante dans notre équation différentielle. Nous voulons donc trouver la forme de coinceur qui permettra à cet angle de rester constant.
 
 ---
 class:middle
@@ -513,21 +512,24 @@ $$
 &lt;img src="index_files/figure-html/spirale-logarithmique-1.png" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
+## La spirale logarithmique
 
-Maintenant que nous connaissons la forme à donner à nos coinceurs mécaniques, il nous faut trouver la valeur du paramètre `\(\beta\)` à leur donner. Rappelons que `\(\beta\)` correspond à l'angle entre le coinceur et la paroi. 
+$$
+r=Ce^{\tfrac{\theta}{\tan(\beta)}}
+$$
 
-Les manufacturiers utilisent plutôt l'angle complémentaire à `\(\beta\)`, noté `\(\gamma\)`, pour créer leurs coinceurs. Ainsi:
+Le paramètre `\(\beta\)` correspond à l'angle entre le coinceur et la paroi. 
+
+Les manufacturiers utilisent plutôt l'angle complémentaire à `\(\beta\)`, noté `\(\gamma\)`, pour créer leurs coinceurs.
 $$
 `\begin{aligned}
-\tan(\beta) &amp;= \tan\left(\frac{\pi}{2}-\gamma\right) \\
-&amp;= \dfrac{1}{\tan(\gamma)}
+\tan(\beta) &amp;= \tan\left(\frac{\pi}{2}-\gamma\right) = \dfrac{1}{\tan(\gamma)}
 \end{aligned}`
 $$
 La spirale logarithmique est donc donnée par:
 $$
 `\begin{aligned}
-r &amp;= Ce^{\tfrac{\theta}{\tan(\beta)}} \\
-&amp;= Ce^{\tan(\gamma)\cdot\theta}
+r &amp;= Ce^{\tfrac{\theta}{\tan(\beta)}} = Ce^{\tan(\gamma)\cdot\theta}
 \end{aligned}`
 $$
 
@@ -558,17 +560,14 @@ $$
 La force normale produite par le coinceur est donnée par:
 $$
 `\begin{aligned}
-N &amp;= \dfrac{F}{4\cot(\beta)} \\
-&amp;= \dfrac{F}{4\tan(\gamma)}
+N &amp;= \dfrac{F}{2\cot(\beta)} = \dfrac{F}{2\tan(\gamma)}
 \end{aligned}`
 $$
 
 En pratique, les manufacturiers utilisent des coinceurs à came avec un angle `\(\gamma\)` d'environ `\(14^{\circ}\)`. Dans cette situation, la force normale est donnée par:
 $$
 `\begin{aligned}
-N &amp;= \dfrac{F}{4\tan(\gamma)} \\
-&amp;= \dfrac{F}{4\tan(14^{\circ})} \\
-&amp;\approx F
+N &amp;= \dfrac{F}{2\tan(\gamma)} = \dfrac{F}{2\tan(14^{\circ})} \approx 2F
 \end{aligned}`
 $$
 
@@ -577,6 +576,27 @@ class:middle, center, inverse
 
 # L'équation du cabestan
 
+---
+
+## La moulinette
+
+- La « moulinette » est une technique principalement utilisée en escalade. 
+- l'un des équipiers a «ouvert la voie» puis est redescendu, on peut utiliser la corde en place pour assurer un coéquipier. Celui-ci monte alors en ayant toujours la corde au-dessus de lui, parce qu'elle passe par le relais avant d'être aux mains de celui qui assure par le bas. 
+
+- Il n'a, par ailleurs, pas besoin de placer des points d'assurage intermédiaires (dégaines). 
+
+- Ensuite, la descente se réalise facilement sous la maîtrise de la personne chargée de tenir la corde (l'assureur). 
+
+- La descente en moulinette maintient souvent la corde en tension, ce qui contribue fortement à son usure.
+
+---
+
+background-image:url(https://upload.wikimedia.org/wikipedia/commons/b/bb/Red_River_Gorge_-_Pebble_Beach_-_Big_Money_2.jpg)
+background-size: contain
+
+???
+
+Image credit : https://commons.wikimedia.org/wiki/File:Red_River_Gorge_-_Pebble_Beach_-_Big_Money_2.jpg
 ---
 
 background-image:url(https://upload.wikimedia.org/wikipedia/commons/2/2f/Capstan-nautical.jpg)
@@ -590,7 +610,45 @@ Image credit : https://commons.wikimedia.org/wiki/File:Capstan-nautical.jpg
 
 ## Définition
 
-Un cabestan est une espèce de treuil à axe vertical, dont le mouvement sert à enrouler et à dérouler un câble ou une corde
+L'équation du cabestan ou équation de la friction, connue aussi sous le nom de la formule d'Eytelwein ([Johann Albert Eytelwein](https://en.wikipedia.org/wiki/Johann_Albert_Eytelwein)), met en relation la force de maintien et la force de tension si une corde flexible est enroulée autour d'un cylindre.
+
+Ce cylindre peut être un bollard, un winch ou un cabestan.
+
+---
+
+background-image:url(https://upload.wikimedia.org/wikipedia/commons/b/b7/Recycle-barge.jpg)
+background-size: contain
+
+???
+
+Image credit : https://commons.wikimedia.org/wiki/File:Recycle-barge.jpg
+
+---
+
+background-image:url(https://upload.wikimedia.org/wikipedia/commons/c/c8/Winch.PNG)
+background-size: contain
+
+???
+
+Image credit : https://commons.wikimedia.org/wiki/File:Winch.PNG
+
+---
+
+background-image:url(https://upload.wikimedia.org/wikipedia/commons/2/2b/Visitors_holding_capstan_bars_turn_the_capstan.jpg)
+background-size: contain
+
+???
+
+Image credit : https://commons.wikimedia.org/wiki/File:Visitors_holding_capstan_bars_turn_the_capstan.jpg
+
+---
+
+.center[
+![](https://static.projects.iq.harvard.edu/files/styles/os_files_medium/public/science-demonstrations/files/65lb.jpg?m=1432049361&amp;itok=cX0AuqPR)
+![](https://static.projects.iq.harvard.edu/files/styles/os_files_medium/public/science-demonstrations/files/65lb2.jpg?m=1432049361&amp;itok=0-DaEokx)
+]
+
+![](https://static.projects.iq.harvard.edu/files/styles/os_files_medium/public/science-demonstrations/files/100lb.jpg?m=1432049361&amp;itok=oCuBvd-f)
 
 ---
 
