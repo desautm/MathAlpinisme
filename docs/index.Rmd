@@ -20,6 +20,8 @@ options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(
   cache=TRUE
 )
+library(tidyverse)
+library(kableExtra)
 ```
 
 ```{r xaringanExtra, echo=FALSE}
@@ -1088,6 +1090,31 @@ Image credit : https://commons.wikimedia.org/wiki/File:Visitors_holding_capstan_
 
 ---
 
+## L'effet du coefficient de friction
+
+```{r capstan-data, echo=FALSE}
+nombre_de_tours <- 1:6
+capstan <- tibble(
+                  nombre_de_tours,
+                  "0.1" = exp(0.1*nombre_de_tours*2*pi),
+                  "0.2" = exp(0.2*nombre_de_tours*2*pi),
+                  "0.3" = exp(0.3*nombre_de_tours*2*pi),
+                  "0.4" = exp(0.4*nombre_de_tours*2*pi),
+                  "0.5" = exp(0.5*nombre_de_tours*2*pi),
+                  "0.6" = exp(0.6*nombre_de_tours*2*pi)
+                  ) %>% 
+  rename("Nombre de tours" = nombre_de_tours)
+
+capstan %>% 
+  kbl(digits=2) %>% 
+  kable_classic() %>% 
+  kable_material(c("striped", "hover")) %>% 
+  kable_styling(font_size = 12) %>% 
+  add_header_above(c(" ", "Coefficient de friction" = 6))
+```
+
+---
+
 .center[
 ![](https://static.projects.iq.harvard.edu/files/styles/os_files_medium/public/science-demonstrations/files/65lb.jpg?m=1432049361&itok=cX0AuqPR)
 ![](https://static.projects.iq.harvard.edu/files/styles/os_files_medium/public/science-demonstrations/files/65lb2.jpg?m=1432049361&itok=0-DaEokx)
@@ -1097,19 +1124,7 @@ Image credit : https://commons.wikimedia.org/wiki/File:Visitors_holding_capstan_
 
 ---
 
-$$
-\dfrac{dT}{d\theta} = \mu T
-$$
 
-$$
-\begin{aligned}
-\dfrac{dT}{d\theta} &= \mu T \\
-\int \dfrac{dT}{T} &= \int \mu d\theta \\
-\ln|T| &= \mu \theta + C_1 \\
-T &= e^{\mu\theta+C_1} \\
-&= C_2 e^{\mu\theta}
-\end{aligned}
-$$
 
 
 

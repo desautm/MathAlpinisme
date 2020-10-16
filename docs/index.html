@@ -10,6 +10,8 @@
     <script src="libs/tile-view/tile-view.js"></script>
     <link href="libs/animate.css/animate.xaringan.css" rel="stylesheet" />
     <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
   </head>
   <body>
     <textarea id="source">
@@ -655,6 +657,84 @@ Image credit : https://commons.wikimedia.org/wiki/File:Visitors_holding_capstan_
 
 ---
 
+## L'effet du coefficient de friction
+
+&lt;table class=" lightable-classic lightable-material lightable-striped lightable-hover table" style='font-family: "Arial Narrow", "Source Sans Pro", sans-serif; margin-left: auto; margin-right: auto; font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto; font-size: 12px; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="empty-cells: hide;" colspan="1"&gt;&lt;/th&gt;
+&lt;th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6"&gt;&lt;div style="TRUE"&gt;Coefficient de friction&lt;/div&gt;&lt;/th&gt;
+&lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; Nombre de tours &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 0.1 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 0.2 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 0.3 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 0.4 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 0.5 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 0.6 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.87 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.51 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.59 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.35 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23.14 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.338000e+01 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.51 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.35 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 43.38 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 152.41 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 535.49 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.881500e+03 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.59 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 43.38 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 285.68 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1881.50 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12391.65 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.161216e+04 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.35 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 152.41 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1881.50 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23227.60 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 286751.31 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.540026e+06 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23.14 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 535.49 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12391.65 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 286751.31 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6635624.00 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.535529e+08 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 43.38 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1881.50 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 81612.16 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3540026.38 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 153552935.40 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.660545e+09 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
 .center[
 ![](https://static.projects.iq.harvard.edu/files/styles/os_files_medium/public/science-demonstrations/files/65lb.jpg?m=1432049361&amp;itok=cX0AuqPR)
 ![](https://static.projects.iq.harvard.edu/files/styles/os_files_medium/public/science-demonstrations/files/65lb2.jpg?m=1432049361&amp;itok=0-DaEokx)
@@ -663,20 +743,6 @@ Image credit : https://commons.wikimedia.org/wiki/File:Visitors_holding_capstan_
 ![](https://static.projects.iq.harvard.edu/files/styles/os_files_medium/public/science-demonstrations/files/100lb.jpg?m=1432049361&amp;itok=oCuBvd-f)
 
 ---
-
-$$
-\dfrac{dT}{d\theta} = \mu T
-$$
-
-$$
-`\begin{aligned}
-\dfrac{dT}{d\theta} &amp;= \mu T \\
-\int \dfrac{dT}{T} &amp;= \int \mu d\theta \\
-\ln|T| &amp;= \mu \theta + C_1 \\
-T &amp;= e^{\mu\theta+C_1} \\
-&amp;= C_2 e^{\mu\theta}
-\end{aligned}`
-$$
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="libs/remark-latest.min.js"></script>
