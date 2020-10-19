@@ -28,6 +28,10 @@ library(kableExtra)
 xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "tachyons"))
 ```
 
+```{r broadcast, echo=FALSE}
+xaringanExtra::use_broadcast()
+```
+
 class: inverse, middle
 
 ## *AVERTISSEMENT*
