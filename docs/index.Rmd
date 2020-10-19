@@ -56,6 +56,15 @@ background-size: contain
 background-image:url(https://www.mntnfilm.com/img/cache/1251-principal-take-it-to-the-limit-2000-42108-235.jpg)
 
 ---
+class: inverse, center, middle
+
+## Cette présentation s'adresse tout de même aux débutants et aux experts!
+
+--
+
+![](https://media.giphy.com/media/3o7TKoLSUWybe97uWA/giphy.gif)
+
+---
 # Quelque notions de base de l'alpinisme
 
 - L'assurage est une technique de réduction des conséquences de la chute d'une personne. 
@@ -1016,13 +1025,14 @@ class:middle, center, inverse
 ## La moulinette
 
 - La « moulinette » est une technique principalement utilisée en escalade. 
-- l'un des équipiers a «ouvert la voie» puis est redescendu, on peut utiliser la corde en place pour assurer un coéquipier. Celui-ci monte alors en ayant toujours la corde au-dessus de lui, parce qu'elle passe par le relais avant d'être aux mains de celui qui assure par le bas. 
 
-- Il n'a, par ailleurs, pas besoin de placer des points d'assurage intermédiaires (dégaines). 
+- Un des équipiers a «ouvert la voie» puis est redescendu.
 
-- Ensuite, la descente se réalise facilement sous la maîtrise de la personne chargée de tenir la corde (l'assureur). 
+- On peut donc utiliser la corde en place pour assurer un coéquipier.
 
-- La descente en moulinette maintient souvent la corde en tension, ce qui contribue fortement à son usure.
+- Pas besoin de placer des points d'assurage intermédiaires (dégaines). 
+
+- La descente se réalise facilement sous la maîtrise de la personne chargée de tenir la corde (l'assureur).
 
 ---
 
@@ -1090,7 +1100,43 @@ Image credit : https://commons.wikimedia.org/wiki/File:Visitors_holding_capstan_
 
 ---
 
+```{tikz, echo=FALSE, out.width="50%", fig.align='center', label="cabestan-equation"}
+\begin{tikzpicture}
+
+\def\phi{220}
+\def\R{2}
+\def\r{0.5}
+\def\dx{0.05}
+\def\angleUN{90-\phi/2}
+\def\angleDEUX{270+\phi/2}
+\def\longueur{1}
+
+\draw[thick] (0,0) circle (\R);
+
+\draw[dashed] (0,0) ++ ({90-\phi/2}:{\R+\dx}) -- (0,0) -- ({90+\phi/2}:{\R+\dx});
+
+\draw (0,0) ++ ({90-\phi/2}:{\r}) arc ({90-\phi/2}:{90+\phi/2}:{\r}) node[midway,above] {$\theta$};
+
+\draw[line width=2pt,blue] (0,0) ++ ({90-\phi/2}:{\R+\dx}) arc ({90-\phi/2}:{90+\phi/2}:{\R+\dx});
+
+\draw[line width=2pt,blue] ({(\R+\dx)*cos(\angleUN)},{(\R+\dx)*sin(\angleUN)}) -- ({(\R+\dx)*cos(\angleUN)-\longueur},{(\R+\dx)*sin(\angleUN)+\longueur/tan(\angleUN)});
+
+\draw[->] ({(\R+\dx)*cos(\angleUN)-\longueur},{(\R+\dx)*sin(\angleUN)+\longueur/tan(\angleUN)}) -- ({(\R+\dx)*cos(\angleUN)-(\longueur+0.25)},{(\R+\dx)*sin(\angleUN)+(\longueur+0.25)/tan(\angleUN)}) node[below] {$F$};
+
+\draw[line width=2pt,blue] ({(\R+\dx)*cos(-\angleDEUX)},{(\R+\dx)*sin(-\angleDEUX)}) -- ({(\R+\dx)*cos(-\angleDEUX)+\longueur},{(\R+\dx)*sin(-\angleDEUX)-\longueur/tan(\angleDEUX)});
+
+\draw[->] ({(\R+\dx)*cos(-\angleDEUX)+\longueur},{(\R+\dx)*sin(-\angleDEUX)-\longueur/tan(\angleDEUX)}) -- ({(\R+\dx)*cos(-\angleDEUX)+(\longueur+0.25)},{(\R+\dx)*sin(-\angleDEUX)-(\longueur+0.25)/tan(\angleDEUX)}) node[below] {$T$};
+
+\end{tikzpicture}
+```
+
+---
+
 ## L'effet du coefficient de friction
+
+On peut étudier l'effet du coefficient de friction présent dans $T=Fe^{\mu \theta}$. Nous allons simplement afficher les valeurs de $e^{\mu \theta}$.
+
+--
 
 ```{r capstan-data, echo=FALSE}
 nombre_de_tours <- 1:6
@@ -1106,26 +1152,41 @@ capstan <- tibble(
   rename("Nombre de tours" = nombre_de_tours)
 
 capstan %>% 
-  kbl(digits=2) %>% 
-  kable_classic() %>% 
-  kable_material(c("striped", "hover")) %>% 
-  kable_styling(font_size = 12) %>% 
+  kbl(digits=2, format = "html") %>% 
   add_header_above(c(" ", "Coefficient de friction" = 6))
 ```
 
 ---
+
+## Une petite expérience
+
+[Harvard Natural Sciences Lecture Demonstrations](https://sciencedemonstrations.fas.harvard.edu/presentations/rope-friction-around-pole)
+
+Une boule de 65 livres (`r 65/2.205` kg) suspendue avec $4 \frac{1}{2}$ tours à gauche et $2 \frac{1}{2}$ tours à droite.
 
 .center[
 ![](https://static.projects.iq.harvard.edu/files/styles/os_files_medium/public/science-demonstrations/files/65lb.jpg?m=1432049361&itok=cX0AuqPR)
 ![](https://static.projects.iq.harvard.edu/files/styles/os_files_medium/public/science-demonstrations/files/65lb2.jpg?m=1432049361&itok=0-DaEokx)
 ]
 
-![](https://static.projects.iq.harvard.edu/files/styles/os_files_medium/public/science-demonstrations/files/100lb.jpg?m=1432049361&itok=oCuBvd-f)
 
 ---
 
+## Une petite expérience (bis)
 
+[Harvard Natural Sciences Lecture Demonstrations](https://sciencedemonstrations.fas.harvard.edu/presentations/rope-friction-around-pole)
 
+Une boule de 100 livres (`r 100/2.205` kg) suspendue avec $4 \frac{1}{2}$ tours.
+
+.center[
+![](https://static.projects.iq.harvard.edu/files/styles/os_files_medium/public/science-demonstrations/files/100lb.jpg?m=1432049361&itok=oCuBvd-f)]
+
+---
+class: inverse, center, middle
+
+## Des questions?
+
+![](https://media.giphy.com/media/rbsL67KdPgYVO/giphy.gif)
 
 
 
