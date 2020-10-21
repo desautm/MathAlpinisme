@@ -51,10 +51,10 @@ class: inverse, middle
 - [Vertical limit (Limite extrême)](https://www.imdb.com/title/tt0190865/?ref_=fn_al_tt_1)
 - [Take it to the limit](https://www.imdb.com/title/tt0251422/?ref_=fn_al_tt_2)
 
-### *Nous préférions vous en avertir*
+### *Nous préférions vous en avertir...*
 
 ---
-background-image:url(https://cdn-0.ultimateactionmovies.com/wp-content/uploads/2018/11/Stallone-Cliffhanger.jpg)
+background-image:url(https://2.bp.blogspot.com/-bh0Lr_CmRO8/V_cKk6gXHwI/AAAAAAAAUJI/mgiVwUiwRggPxsRql0XitpIjLYZofD_SwCEw/s1600/cliffhanger_poster.jpg)
 background-size: contain
 
 ---
@@ -200,6 +200,10 @@ où `\(m\)` est la masse du grimpeur et `\(g\)` la constante gravitationnelle av
 
 --
 
+Nous allons réécrire la seconde loi de Newton pour l'utiliser dans notre résolution.
+
+--
+
 $$
 `\begin{aligned}
 m\dfrac{d^2y}{dt^2} &amp;= m \dfrac{d}{dt}\underbrace{\left[\dfrac{dy}{dt}\right]}_{=v} \\
@@ -216,6 +220,11 @@ $$
 
 --
 
+.pull-left[
+&lt;img src="index_files/figure-html/modelisation-chute-1-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
 $$
 `\begin{aligned}
 m\dfrac{d^2y}{dt^2} &amp;= mg \\
@@ -226,6 +235,7 @@ v\dfrac{dv}{dy} &amp;= g \\
 v^2 &amp;= 2gy+C_2
 \end{aligned}`
 $$
+]
 
 ---
 
@@ -252,6 +262,11 @@ $$
 
 --
 
+.pull-left[
+&lt;img src="index_files/figure-html/modelisation-chute-2-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
 $$
 `\begin{aligned}
 mv\dfrac{dv}{dy} &amp;= mg-\dfrac{k}{L}(y-D_C) \\
@@ -260,6 +275,7 @@ mv\dfrac{dv}{dy} &amp;= mg-\dfrac{k}{L}(y-D_C) \\
 v^2 &amp;= 2gy-\dfrac{k}{mL}(y-D_C)^2+C_2
 \end{aligned}`
 $$
+]
 ---
 
 ## La constante d'intégration
@@ -279,6 +295,14 @@ Le carré de la vitesse du grimpeur lorsque la corde s'étire est donc `\(v^2 = 
 ---
 
 Nous voulons maintenant évaluer cette vitesse lorsque `\(y=D_T\)`. À cet endroit, la vitesse est nulle, car la chute du grimpeur est terminée et donc:
+
+--
+
+.pull-left[
+&lt;img src="index_files/figure-html/modelisation-chute-3-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
 $$
 `\begin{aligned}
 v^2 &amp;= 2gy-\dfrac{k}{mL}(y-D_C)^2 \\
@@ -288,6 +312,7 @@ v^2(D_T) &amp;= 2gD_T-\dfrac{k}{mL}(D_T-D_C)^2 \\
 D_T-D_C &amp;= \sqrt{\dfrac{2gmLD_T}{k}}
 \end{aligned}`
 $$
+]
 
 ---
 
@@ -296,17 +321,25 @@ Par la loi de Hooke, nous avons donc que la force ressentie par le grimpeur tout
 $$
 `\begin{aligned}
 F_c &amp;= k\left(\dfrac{L_e-L}{L}\right) \\
-&amp;= k\left(\dfrac{D_T-D_C}{L}\right) \\
+&amp;= k\left(\dfrac{D_T-D_C}{L}\right) \ \text{où } D_T-D_C = \sqrt{\dfrac{2gmLD_T}{k}}\\
 &amp;= \dfrac{k}{L}\sqrt{\dfrac{2gmLD_T}{k}} \\
 &amp;= \sqrt{\dfrac{2gmkD_T}{L}} \\
 &amp;= \sqrt{2gmk\left(\dfrac{D_T}{L}\right)}
 \end{aligned}`
 $$
 
+--
+
+### *Le carré de la force est proportionnel au facteur de chute, `\(\dfrac{D_T}{L}\)`!*
+
 ---
 class:inverse, center, middle
 
 # Les divers facteurs de chute
+
+--
+
+## Maximum de 2 et minimum de 0
 
 ---
 
@@ -344,6 +377,10 @@ class: inverse, center, middle
 
 # L'escalade intérieure
 
+--
+
+## Facteur de chute de 0
+
 ---
 
 &lt;img src="index_files/figure-html/facteur-chute-0-1.png" width="50%" style="display: block; margin: auto;" /&gt;
@@ -353,6 +390,21 @@ class:middle, center, inverse
 
 # Le design et le test des cordes d'escalade
 
+---
+
+## L'union internationale des associations d'alpinisme (UIAA)
+
+[L'UIAA](https://www.theuiaa.org/) est une organisation qui représente plusieurs millions d'alpinistes et de grimpeurs.
+
+![](https://upload.wikimedia.org/wikipedia/fr/6/63/UIAA-logo.svg)
+
+---
+
+## Le test de chute
+
+C'est elle qui s'occupe d'instaurer les spécifications pour, entre autres, les cordes d'escalade. Un des tests importants est le test de chute.
+
+Pour ce test de chute, l'UIAA utilise une corde de longueur `\(2,8\)` m à laquelle elle attache une masse de `\(80\)` kg, représentant un grimpeur "moyen". Elle place la masse à une hauteur de `\(2,3\)` m pour ensuite la faire tomber d'une hauteur totale de `\(4,8\)` m. Ceci lui permet d'obtenir un facteur de chute d'environ `\(1,71\)`. Le test utilise donc un facteur de chute tout près du maximum théorique de `\(2\)`.
 
 ---
 class:middle, center, inverse
