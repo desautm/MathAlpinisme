@@ -396,15 +396,55 @@ class:middle, center, inverse
 
 [L'UIAA](https://www.theuiaa.org/) est une organisation qui représente plusieurs millions d'alpinistes et de grimpeurs.
 
-![](https://upload.wikimedia.org/wikipedia/fr/6/63/UIAA-logo.svg)
+.center[![UIAA](https://upload.wikimedia.org/wikipedia/fr/6/63/UIAA-logo.svg)]
+
+C'est elle qui s'occupe d'instaurer les spécifications pour, entre autres, les cordes d'escalade. Un des tests importants est le test de chute.
 
 ---
 
 ## Le test de chute
 
-C'est elle qui s'occupe d'instaurer les spécifications pour, entre autres, les cordes d'escalade. Un des tests importants est le test de chute.
+.pull-left[
+&lt;img src="index_files/figure-html/test-chute-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
 
-Pour ce test de chute, l'UIAA utilise une corde de longueur `\(2,8\)` m à laquelle elle attache une masse de `\(80\)` kg, représentant un grimpeur "moyen". Elle place la masse à une hauteur de `\(2,3\)` m pour ensuite la faire tomber d'une hauteur totale de `\(4,8\)` m. Ceci lui permet d'obtenir un facteur de chute d'environ `\(1,71\)`. Le test utilise donc un facteur de chute tout près du maximum théorique de `\(2\)`.
+.pull-right[
+
+- L'UIAA utilise une corde de longueur `\(2,8\)` m à laquelle elle attache une masse de `\(80\)` kg (représentant un grimpeur **moyen**).
+
+- Elle place la masse à une hauteur de `\(2,3\)` m pour ensuite la faire tomber d'une hauteur totale de `\(4,8\)` m. 
+
+- Ceci lui permet d'obtenir un facteur de chute d'environ 1.7142857.
+]
+
+---
+
+## Pourquoi 80 kg?
+
+--
+
+.center[![](https://media.giphy.com/media/Me94RLaQ8vpNMkWwgC/giphy.gif)]
+
+---
+
+## Pourquoi 80 kg?
+
+- La force maximale ressentie ne doit pas dépasser `\(12\)` kN. 
+
+- Le corps humain ne peut pas être soumis à un impact supérieur à `\(15\)` fois l'accélération gravitationnelle, sans en ressentir de graves séquelles.
+
+--
+
+- Par la seconde loi de Newton:
+
+$$
+`\begin{aligned}
+F &amp;= ma \\
+12\ 000 &amp;= m\cdot (15g) \\
+m &amp;= \frac{12\ 000}{15g} \\
+&amp;\approx 81,5\ kg
+\end{aligned}`
+$$
 
 ---
 class:middle, center, inverse
