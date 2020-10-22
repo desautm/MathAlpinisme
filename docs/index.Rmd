@@ -6,7 +6,6 @@ institute: "Cégep Saint-Jean-sur-Richelieu"
 date: "10 décembre 2020 <br><br> Présentation disponible à https://desautm.github.io/MathAlpinisme <br> Code disponible à  https://github.com/desautm/MathAlpinisme"
 output:
   xaringan::moon_reader:
-    chakra: libs/remark-latest.min.js
     lib_dir: libs
     nature:
       highlightStyle: github
