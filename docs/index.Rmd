@@ -45,11 +45,17 @@ class: inverse, middle
 - [Vertical limit (Limite extrême)](https://www.imdb.com/title/tt0190865/?ref_=fn_al_tt_1)
 - [Take it to the limit](https://www.imdb.com/title/tt0251422/?ref_=fn_al_tt_2)
 
+--
+
 ### *Nous préférions vous en avertir...*
 
 ---
 background-image:url(https://2.bp.blogspot.com/-bh0Lr_CmRO8/V_cKk6gXHwI/AAAAAAAAUJI/mgiVwUiwRggPxsRql0XitpIjLYZofD_SwCEw/s1600/cliffhanger_poster.jpg)
 background-size: contain
+
+???
+
+AN AVALANCHE OF THRILLS.
 
 ---
 background-image:url(https://images-na.ssl-images-amazon.com/images/S/pv-target-images/0992b0fd91fe5173b0be6464690855c9606f84802f465c3d9a43c9baf3395a6f._RI_V_TTW_.jpg)
@@ -57,6 +63,10 @@ background-size: contain
 
 ---
 background-image:url(https://www.mntnfilm.com/img/cache/1251-principal-take-it-to-the-limit-2000-42108-235.jpg)
+
+???
+
+YOU CAN'T REACH THE TOP IF YOU'RE AFRAID TO FALL.
 
 ---
 class: inverse, center, middle
@@ -68,7 +78,8 @@ class: inverse, center, middle
 ![](https://media.giphy.com/media/3o7TKoLSUWybe97uWA/giphy.gif)
 
 ---
-# Quelque notions de base de l'alpinisme
+
+## Quelque notions de base de l'alpinisme
 
 - L'assurage est une technique de réduction des conséquences de la chute d'une personne. 
 
@@ -152,6 +163,7 @@ class: middle, center
 \foreach \x / \y  in {1/-4,5/0,5/2} \draw[red,fill] (\x,\y) circle (2pt);
 
 \node[ellipse callout, draw,callout relative pointer={(-0.25,-0.8)}] at (1.25,-1.5) {OUF!};
+\node[ellipse callout, draw,callout relative pointer={(-0.1,-0.8)}, fill=white] at (6,2.5) {Merci!};
 
 \end{tikzpicture}
 ```
@@ -194,7 +206,7 @@ class: middle, center
 ```
 
 ---
-# *Taking a whipper*
+## *Taking a whipper*
 
 - Un *whipper* est une chute extrêmement dure lorsque la corde soutenant le grimpeur est soumise à un poids important. 
 
@@ -214,7 +226,7 @@ class: center, middle, inverse
 
 ---
 
-# Les hypothèses
+## Les hypothèses
 
 - Soit une corde élastique de longueur $L$ (avant l’étirement) entre un grimpeur et son assureur.
 
@@ -884,7 +896,11 @@ C'est elle qui s'occupe d'instaurer les spécifications pour, entre autres, les 
 
 --
 
-.center[![](https://media.giphy.com/media/Me94RLaQ8vpNMkWwgC/giphy.gif)]
+.pull-left[![](https://media.giphy.com/media/Me94RLaQ8vpNMkWwgC/giphy.gif)]
+
+--
+
+.pull-right[![](https://media.giphy.com/media/l2Je5w5osPkEWZ6rC/giphy.gif)]
 
 ---
 
