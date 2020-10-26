@@ -81,11 +81,19 @@ class: inverse, center, middle
 
 ## Quelque notions de base de l'alpinisme
 
+--
+
 - L'assurage est une technique de réduction des conséquences de la chute d'une personne. 
+
+--
 
 - Cela s'effectue par le contrôle de la corde de progression, de manière à ce que la personne engagée soit retenue si elle venait à chuter.
 
+--
+
 - Cette tâche est habituellement assignée à un assureur. 
+
+--
 
 - Pour assurer un grimpeur, l'assureur utilise généralement la friction de la corde sur un objet qui va lui permettre de coulisser mais qui pourra être bloqué manuellement, voire automatiquement dans certains cas, lors de la chute.
 
@@ -208,9 +216,15 @@ class: middle, center
 ---
 ## *Taking a whipper*
 
+--
+
 - Un *whipper* est une chute extrêmement dure lorsque la corde soutenant le grimpeur est soumise à un poids important. 
 
+--
+
 - Le terme *whipper* provient du mouvement de balancier que le grimpeur qui chute peut avoir si l'assureur effectue mal son travail. 
+
+--
 
 - Même s'il n'y a pas de mouvement de balancier, le terme *whipper* est utilisé pour des chutes dures.
 
@@ -228,11 +242,19 @@ class: center, middle, inverse
 
 ## Les hypothèses
 
+--
+
 - Soit une corde élastique de longueur $L$ (avant l’étirement) entre un grimpeur et son assureur.
+
+--
 
 - Si la corde n'est pas élastique, le facteur de chute ne s'applique pas.
 
+--
+
 - Nous nous intéressons seulement à la chute du grimpeur et nous omettons la possibilité qu'il se heurte à des roches, etc.
+
+--
 
 - Nous omettons les forces de frottement que subit la corde en passant dans les mousquetons, etc.
 
@@ -267,37 +289,35 @@ class: center, middle, inverse
 \end{tikzpicture}
 ```
 
----
-
-# La loi de Hooke
-
-- Le mode de déformation le plus simple est la traction (étirement) ou la compression selon un axe. 
-
-- Pour de petites déformations, la variation de longueur $\Delta x$ est proportionnelle à la force de traction/compression $F_c$ générée par le ressort.
-
-- $F_c = k \Delta x$
 
 ---
+
+## La loi de Hooke
+
+--
+
+- La force qu’exerce la corde sur le grimpeur dépend de la longueur avec laquelle celle-ci s’est
+étirée par rapport à sa longueur initiale. 
+
+--
+
+- Supposons que la longueur de la corde à un instant $t$ est donnée par $L_e$, où $L_e > L$. 
+
+--
+
+- Selon la loi de Hooke, la force $F_c$ exercée par la corde est proportionnelle à l’étirement sur la longueur initiale de la corde, c’est-à-dire :
+$$
+F_c = k\left(\frac{L_e-L}{L}\right)
+$$
+
+---
+
 background-image:url(https://upload.wikimedia.org/wikipedia/commons/f/fc/Hookes-law-springs.png)
 background-size: contain
 
 ???
 
 Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hookes-law-springs.png)
-
----
-
-# La loi de Hooke
-
-- La force qu’exerce la corde sur le grimpeur dépend de la longueur avec laquelle celle-ci s’est
-étirée par rapport à sa longueur initiale. 
-
-- Supposons que la longueur de la corde à un instant $t$ est donnée par $L_e$, où $L_e > L$. 
-
-- Selon la loi de Hooke, la force $F_c$ exercée par la corde est proportionnelle à l’étirement sur la longueur initiale de la corde, c’est-à-dire :
-$$
-F_c = k\left(\frac{L_e-L}{L}\right)
-$$
 
 ---
 class: middle, inverse
@@ -316,7 +336,7 @@ class: inverse, center, middle
 
 ---
 
-```{tikz, echo=FALSE, out.width="60%", fig.align='center', label="modelisation-chute"}
+```{tikz, echo=FALSE, out.width="90%", fig.align='center', label="modelisation-chute"}
 \def\grimpeur#1#2#3#4{
 \begin{scope}[shift={#1}, rotate=#2, scale=#4]
     \tikzstyle{my style}=[line cap=round, rounded corners, line width=3pt, color = #3]
@@ -341,6 +361,10 @@ class: inverse, center, middle
 \grimpeur{(-2,-3)}{-45}{gray}{0.2};
 \grimpeur{(-2,-4)}{-45}{gray}{0.2};
 
+\node[left] at (-3,0) {$v(0)=0$};
+\node[left] at (-3,-3) {$v(D_C)=?$};
+\node[left] at (-3,-4) {$v(D_T)=0$};
+
 \draw[blue, line width=2pt, opacity = 0.5] (-2,0)--(-2,-4);
 
 \foreach \x / \y  in {-2/0,-2/-3,-2/-4} \draw[red,fill] (\x,\y) circle (1.5pt);
@@ -351,6 +375,8 @@ class: inverse, center, middle
 ---
 
 ## La seconde loi de Newton
+
+--
 
 Lorsque le grimpeur tombe en chute libre, jusqu'à une distance $D_C$, la seule force sur le grimpeur est la force de gravité. Par la seconde loi de Newton, la position du grimpeur est donc donnée par l'équation différentielle:
 
@@ -377,15 +403,11 @@ m\dfrac{d^2y}{dt^2} &= m \dfrac{d}{dt}\underbrace{\left[\dfrac{dy}{dt}\right]}_{
 \end{aligned}
 $$
 
-
 ---
-
-## Résolution de l'équation différentielle pour la chute libre
-
---
+class: middle
 
 .pull-left[
-```{tikz, echo=FALSE, out.width="100%", fig.align='center', label="modelisation-chute-1"}
+```{tikz, echo=FALSE, out.width="100%", fig.align='center'}
 \def\grimpeur#1#2#3#4{
 \begin{scope}[shift={#1}, rotate=#2, scale=#4]
     \tikzstyle{my style}=[line cap=round, rounded corners, line width=3pt, color = #3]
@@ -396,23 +418,25 @@ $$
 \end{scope} 
 }
 
+\def\vitesse#1#2#3{
+\draw[dashed] (-2.5,#1) node[left] {$#2$} -- (-1,#1) node[right] {$#3$};
+}
+
 \begin{tikzpicture}
 
-\draw[->] (-1,0)--(1,0) node[below] {$x$};
-\draw[<-] (0,-5)--(0,1) node[left] {$y$};
+\grimpeur{(-2,0)}{0}{gray!50!white}{0.2};
+\grimpeur{(-2,-3)}{-45}{gray!50!white}{0.2};
+\grimpeur{(-2,-4)}{-45}{gray!50!white}{0.2};
 
-\draw (-0.1,-3) node[left] {$D_C$} --(0.1,-3);
-\draw (-0.1,-4) node[left] {$D_T$} --(0.1,-4);
+\draw[blue!50!white, line width=2pt] (-2,0)--(-2,-4);
 
-\draw[<->] (0.4,-4)--(0.4,-3) node[midway,right] {Étirement};
-
-\grimpeur{(-2,0)}{0}{black}{0.2};
-\grimpeur{(-2,-3)}{-45}{gray}{0.2};
-\grimpeur{(-2,-4)}{-45}{gray!25!white}{0.2};
-
-\draw[blue, line width=2pt, opacity = 0.5] (-2,0)--(-2,-4);
+\vitesse{0}{v(0)=0}{0}
+\vitesse{-3}{v(D_C)=?}{D_C}
+\vitesse{-4}{v(D_T)=0}{D_T}
 
 \foreach \x / \y  in {-2/0,-2/-3,-2/-4} \draw[red,fill] (\x,\y) circle (1.5pt);
+
+\draw[<-] (-2,-5)--(-2,1.5) node[left] {$y$};
 
 \end{tikzpicture}
 ```
@@ -432,20 +456,57 @@ $$
 ]
 
 ---
+class: middle
 
-## La constante d'intégration
+.pull-left[
+```{tikz, echo=FALSE, out.width="100%", fig.align='center'}
+\def\grimpeur#1#2#3#4{
+\begin{scope}[shift={#1}, rotate=#2, scale=#4]
+    \tikzstyle{my style}=[line cap=round, rounded corners, line width=3pt, color = #3]
+    \draw[my style] (-1,-2)--(-2,0)--(0,0)--(0,2);
+    \draw[my style] (0,0)--(0,-4);
+    \draw[my style] (2,4)--(2,2)--(0,2)--(-1,4)--(0,6);
+    \draw[my style,fill] (0.5,3) circle (10pt);
+\end{scope} 
+}
 
+\def\vitesse#1#2#3{
+\draw[dashed] (-2.5,#1) node[left] {$#2$} -- (-1,#1) node[right] {$#3$};
+}
+
+\begin{tikzpicture}
+
+\grimpeur{(-2,0)}{0}{gray!50!white}{0.2};
+\grimpeur{(-2,-3)}{-45}{gray!50!white}{0.2};
+\grimpeur{(-2,-4)}{-45}{gray!50!white}{0.2};
+
+\draw[blue!50!white, line width=2pt] (-2,0)--(-2,-4);
+
+\vitesse{0}{v(0)=0}{0}
+\vitesse{-3}{v(D_C)=\sqrt{2gD_C}}{D_C}
+\vitesse{-4}{v(D_T)=0}{D_T}
+
+\foreach \x / \y  in {-2/0,-2/-3,-2/-4} \draw[red,fill] (\x,\y) circle (1.5pt);
+
+\draw[<-] (-2,-5)--(-2,1.5) node[left] {$y$};
+
+\end{tikzpicture}
+```
+]
+
+.pull-right[
 - Nous avons : $v^2=2gy+C_2$.
 
 - Puisque la vitesse du grimpeur au temps initial est nulle, nous avons donc $C_2 = 0$.
 
 - Puisque $v^2(y) = 2gy$, à la fin de la chute libre nous avons $v^2(D_C)=2gD_C$.
-
-- Nous aurions pu obtenir le même résultat en utilisant les énergies potentielles et cinétiques du grimpeur.
+]
 
 ---
 
 ## Écriture de l'équation différentielle pour la chute retenue par la corde
+
+--
 
 À partir du moment où la corde commence à se tendre, une seconde force entre en jeu, la force de Hooke. Puisque le mouvement se fait vers le bas, la force de Hooke va être dans la direction inverse, pour ralentir le mouvement du grimpeur. L'équation différentielle sera donc 
 $$mv\dfrac{dv}{dy} = mg-\dfrac{k}{L}(y-D_C)$$
@@ -503,6 +564,8 @@ $$
 ---
 
 ## La constante d'intégration
+
+--
 
 La condition initiale de ce problème correspond à la vitesse du grimpeur après sa chute libre, c'est-à-dire lorsqu'il se trouve à $D_C$.
 
@@ -932,6 +995,8 @@ class:middle, center, inverse
 
 ## Définition
 
+--
+
 .pull-left[
 Un coinceur mécanique, ou coinceur à came, est un équipement de protection pour
 l’escalade ou l’alpinisme. Il consiste en deux, trois, ou quatre cames montées sur un
@@ -973,6 +1038,8 @@ Image credit : https://commons.wikimedia.org/wiki/File:Camalot_number_6.JPG
 ---
 
 ## Principe de base
+
+--
 
 Le principe de base du coinceur mécanique est le suivant. La force qui tire vers le bas permet
 de coincer encore plus fort le coinceur dans la fissure. Le frottement entre le coinceur et la
@@ -1065,17 +1132,21 @@ $$
 F_t &= F_n\cot(\beta)
 \end{aligned}
 $$
+
+- Le coinceur reste en place en raison du coefficient de friction de la paroi, noté $\mu$.
+
+- Il suffit que $F_t<\mu F_n$ pour que le coinceur ne glisse pas.
+
+- Ceci implique que $F_n\cot(\beta)<\mu F_n$ et donc que $\cot(\beta)<\mu$.
+
 ]
 
 ---
 
 ## Le coefficient de friction
 
-- Le coinceur reste en place en raison du coefficient de friction de la paroi, noté $\mu$. 
+- Le coinceur reste en place si $\cot(\beta)<\mu$. 
 
-- Il suffit que $F_t<\mu F_n$ pour que le coinceur ne glisse pas.
-
-- Ceci implique que $F_n\cot(\beta)<\mu F_n$ et donc que $\cot(\beta)<\mu$. 
 - Puisque nous allons travailler avec des tangentes, il est préférable d'utiliser l'inégalité $\tan(\beta)>\frac{1}{\mu}$.
 
 - Puisque $\tan(\beta)$ doit toujours être strictement supérieur à $\frac{1}{\mu}$, il semble indiqué d'obliger l'angle $\beta$ à rester constant, c'est-à-dire $\tan(\beta)=K$. 
