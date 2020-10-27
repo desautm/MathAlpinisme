@@ -599,33 +599,46 @@ $$
 
 ## Le coefficient de friction
 
-- Le coinceur reste en place si `\(\cot(\beta)&lt;\mu\)`. 
+Le coinceur reste en place si `\(\cot(\beta)&lt;\mu\)`. 
 
-- Puisque nous allons travailler avec des tangentes, il est préférable d'utiliser l'inégalité `\(\tan(\beta)&gt;\frac{1}{\mu}\)`.
 
-- Puisque `\(\tan(\beta)\)` doit toujours être strictement supérieur à `\(\frac{1}{\mu}\)`, il semble indiqué d'obliger l'angle `\(\beta\)` à rester constant, c'est-à-dire `\(\tan(\beta)=K\)`. 
+Puisque nous allons travailler avec des tangentes, il est préférable d'utiliser l'inégalité `\(\tan(\beta)&gt;\frac{1}{\mu}\)`.
 
+
+Puisque `\(\tan(\beta)\)` doit toujours être strictement supérieur à `\(\frac{1}{\mu}\)`, il semble indiqué d'obliger l'angle `\(\beta\)` à rester constant, c'est-à-dire `\(\tan(\beta)=K\)`. 
+
+--
+
+### *On veut trouver la forme mathématique telle que l'angle `\(\beta\)` reste constant!*
 
 ---
-class:middle
+
+&lt;img src="index_files/figure-html/coinceur-mathematisation-rotation-1-1.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## L'équation différentielle à résoudre
+
+--
 
 .pull-left[
-&lt;img src="index_files/figure-html/coinceur-mathematisation-rotation-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+### Rappel
+
+- `\(\beta = \alpha-\theta\)`
+
+- `\(\tan(\theta) = \frac{y}{x}\)`
+
+- `\(\tan(\alpha) = \frac{dy}{dx}\)`
+
+- `\(\tan(A-B) = \frac{\tan(A)-\tan(B)}{1+\tan(A)\tan(B)}\)`
+
 ]
 
 --
 
 .pull-right[
-Nous remarquons que `\(\beta=\alpha-\theta\)`. Nous voulons que l'angle `\(\beta\)` reste constant.
+### En utilisant les tangentes
 
-De plus, nous remarquons que:
-$$
-`\begin{aligned}
-\tan(\alpha) &amp;= \dfrac{dy}{dx} \\
-\tan(\theta) &amp;= \dfrac{y}{x}
-\end{aligned}`
-$$
-Nous avons donc:
 $$
 `\begin{aligned}
 \tan(\beta) &amp;= \tan(\alpha-\theta) \\
@@ -633,11 +646,13 @@ K &amp;= \dfrac{\tan(\alpha)-\tan(\theta)}{1+\tan(\alpha)\tan(\theta)} \\
 &amp;= \dfrac{\frac{dy}{dx}-\frac{y}{x}}{1+\frac{y}{x}\cdot \frac{dy}{dx}}
 \end{aligned}`
 $$
+
 ]
+
 
 ---
 
-Pour résoudre l'équation différentielle à variables séparables précédente, nous allons poser le changement de variable `\(u=\frac{y}{x}\)`. Nous avons donc:
+Pour résoudre l'équation différentielle à variables séparables précédente, on doit poser le changement de variable `\(u=\frac{y}{x}\)`. 
 $$
 `\begin{aligned}
 y &amp;= ux \\
@@ -647,14 +662,14 @@ $$
 
 --
 
-Nous obtenons:
+Après quelques minutes...
 $$
 \text{Arctan}\left(\frac{y}{x}\right)-\dfrac{K}{2}\ln\left|1+\left(\frac{y}{x}\right)^2\right| = K\ln|x|+C_1
 $$
 
 --
 
-En posant 
+Pour rendre l'équation plus compréhensible...
 $$
 `\begin{aligned}
 x &amp;= r\cos(\theta) \\
@@ -664,7 +679,7 @@ $$
 
 --
 
-Nous obtenons:
+Enfin!
 $$
 r=Ce^{\tfrac{\theta}{\tan(\beta)}}
 $$
@@ -676,20 +691,19 @@ $$
 &lt;img src="index_files/figure-html/spirale-logarithmique-1.png" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
+
 ## La spirale logarithmique
 
-$$
-r=Ce^{\tfrac{\theta}{\tan(\beta)}}
-$$
+Plutôt que d'utiliser le paramètre `\(\beta\)`, les manufacturiers de coinceurs mécaniques utilisent l'angle complémentaire `\(\gamma\)`.
 
-Le paramètre `\(\beta\)` correspond à l'angle entre le coinceur et la paroi. 
-
-Les manufacturiers utilisent plutôt l'angle complémentaire à `\(\beta\)`, noté `\(\gamma\)`, pour créer leurs coinceurs.
 $$
 `\begin{aligned}
 \tan(\beta) &amp;= \tan\left(\frac{\pi}{2}-\gamma\right) = \dfrac{1}{\tan(\gamma)}
 \end{aligned}`
 $$
+
+--
+
 La spirale logarithmique est donc donnée par:
 $$
 `\begin{aligned}
@@ -697,9 +711,10 @@ r &amp;= Ce^{\tfrac{\theta}{\tan(\beta)}} = Ce^{\tan(\gamma)\cdot\theta}
 \end{aligned}`
 $$
 
-Le paramètre `\(\gamma\)` contrôle "l'ouverture" de la spirale logarithmique et permet de modifier la gamme de largeur du coinceur mécanique.
+Le paramètre `\(\gamma\)` contrôle « l'ouverture » de la spirale logarithmique et permet de modifier la gamme de largeur du coinceur mécanique.
 
 ---
+name: ouverture-coinceur-mecanique
 
 ## L'ouverture du coinceur mécanique
 
@@ -711,6 +726,29 @@ class:middle
 &lt;iframe src="https://www.geogebra.org/classic/ekhmvsmr?embed" width="800" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"&gt;&lt;/iframe&gt;
 
 ---
+## Une « ouverture » aussi grande que possible?
+
+--
+
+Plus l'angle `\(\gamma\)` est grand, plus la gamme de largeurs de failles dans lesquelles nous pouvons installer le coinceur est grande.
+
+--
+
+#### Mais y-a-t'il une limite?
+
+---
+
+template: ouverture-coinceur-mecanique
+
+---
+
+## Une ouverture aussi grande que possible?
+
+Plus l'angle `\(\gamma\)` est grand, plus la gamme de largeurs de failles dans lesquelles nous pouvons installer le coinceur est grande.
+
+#### Mais y-a-t'il une limite? OUI!
+
+--
 
 Pour que le coinceur reste en place, il faut que l'inégalité suivante soit respectée.
 $$
@@ -721,19 +759,9 @@ $$
 \end{aligned}`
 $$
 
-La force normale produite par le coinceur est donnée par:
-$$
-`\begin{aligned}
-N &amp;= \dfrac{F}{2\cot(\beta)} = \dfrac{F}{2\tan(\gamma)}
-\end{aligned}`
-$$
+--
 
-En pratique, les manufacturiers utilisent des coinceurs à came avec un angle `\(\gamma\)` d'environ `\(14^{\circ}\)`. Dans cette situation, la force normale est donnée par:
-$$
-`\begin{aligned}
-N &amp;= \dfrac{F}{2\tan(\gamma)} = \dfrac{F}{2\tan(14^{\circ})} \approx 2F
-\end{aligned}`
-$$
+En pratique, les manufacturiers utilisent des coinceurs à came avec un angle `\(\gamma\)` d'environ `\(14^{\circ}\)`.
 
 ---
 class:middle, center, inverse

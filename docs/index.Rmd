@@ -1153,18 +1153,21 @@ $$
 
 ## Le coefficient de friction
 
-- Le coinceur reste en place si $\cot(\beta)<\mu$. 
+Le coinceur reste en place si $\cot(\beta)<\mu$. 
 
-- Puisque nous allons travailler avec des tangentes, il est préférable d'utiliser l'inégalité $\tan(\beta)>\frac{1}{\mu}$.
 
-- Puisque $\tan(\beta)$ doit toujours être strictement supérieur à $\frac{1}{\mu}$, il semble indiqué d'obliger l'angle $\beta$ à rester constant, c'est-à-dire $\tan(\beta)=K$. 
+Puisque nous allons travailler avec des tangentes, il est préférable d'utiliser l'inégalité $\tan(\beta)>\frac{1}{\mu}$.
 
+
+Puisque $\tan(\beta)$ doit toujours être strictement supérieur à $\frac{1}{\mu}$, il semble indiqué d'obliger l'angle $\beta$ à rester constant, c'est-à-dire $\tan(\beta)=K$. 
+
+--
+
+### *On veut trouver la forme mathématique telle que l'angle $\beta$ reste constant!*
 
 ---
-class:middle
 
-.pull-left[
-```{tikz, echo=FALSE, out.width="100%", fig.align='center', label="coinceur-mathematisation-rotation"}
+```{tikz, echo=FALSE, out.width="90%", fig.align='center', label="coinceur-mathematisation-rotation-1"}
 \begin{tikzpicture}[scale=4]
 
 \draw[->] (-0.1,0)--(1.5,0) node[below] {$x$};
@@ -1176,28 +1179,41 @@ class:middle
 \draw (1.16,0)--(0.4,0.93);
 
 \draw (0,0) ++(0:0.25) arc (0:31:0.25) node[midway,right] {$\theta$};
-\draw (0.8,0.43826) ++(44:0.15) arc (44:129:0.15) node[midway,above] {$\beta$};
+\draw (0.8,0.43826) ++(44:0.15) arc (44:129:0.15) node[midway,above,label={[label distance=0cm]90:$\beta=\alpha-\theta$}] {};
 \draw (1.15,0) ++(0:0.15) arc (0:127:0.15) node[midway,above] {$\alpha$};
 
 \draw[fill] (0.777,0.4665) circle (0.35pt) node[right=5pt] {$(x,y)$};
 
+\draw[dashed] (0.777,0.4665)--++(0,-0.4665);
+\node[below] at (0.75,-0.25) {$\tan(\theta) = \frac{y}{x}$ et $\tan(\alpha) = \frac{dy}{dx}$};
+
 \end{tikzpicture}
 ```
+
+---
+
+## L'équation différentielle à résoudre
+
+--
+
+.pull-left[
+### Rappel
+
+- $\beta = \alpha-\theta$
+
+- $\tan(\theta) = \frac{y}{x}$
+
+- $\tan(\alpha) = \frac{dy}{dx}$
+
+- $\tan(A-B) = \frac{\tan(A)-\tan(B)}{1+\tan(A)\tan(B)}$
+
 ]
 
 --
 
 .pull-right[
-Nous remarquons que $\beta=\alpha-\theta$. Nous voulons que l'angle $\beta$ reste constant.
+### En utilisant les tangentes
 
-De plus, nous remarquons que:
-$$
-\begin{aligned}
-\tan(\alpha) &= \dfrac{dy}{dx} \\
-\tan(\theta) &= \dfrac{y}{x}
-\end{aligned}
-$$
-Nous avons donc:
 $$
 \begin{aligned}
 \tan(\beta) &= \tan(\alpha-\theta) \\
@@ -1205,11 +1221,13 @@ K &= \dfrac{\tan(\alpha)-\tan(\theta)}{1+\tan(\alpha)\tan(\theta)} \\
 &= \dfrac{\frac{dy}{dx}-\frac{y}{x}}{1+\frac{y}{x}\cdot \frac{dy}{dx}}
 \end{aligned}
 $$
+
 ]
+
 
 ---
 
-Pour résoudre l'équation différentielle à variables séparables précédente, nous allons poser le changement de variable $u=\frac{y}{x}$. Nous avons donc:
+Pour résoudre l'équation différentielle à variables séparables précédente, on doit poser le changement de variable $u=\frac{y}{x}$. 
 $$
 \begin{aligned}
 y &= ux \\
@@ -1219,14 +1237,14 @@ $$
 
 --
 
-Nous obtenons:
+Après quelques minutes...
 $$
 \text{Arctan}\left(\frac{y}{x}\right)-\dfrac{K}{2}\ln\left|1+\left(\frac{y}{x}\right)^2\right| = K\ln|x|+C_1
 $$
 
 --
 
-En posant 
+Pour rendre l'équation plus compréhensible...
 $$
 \begin{aligned}
 x &= r\cos(\theta) \\
@@ -1236,7 +1254,7 @@ $$
 
 --
 
-Nous obtenons:
+Enfin!
 $$
 r=Ce^{\tfrac{\theta}{\tan(\beta)}}
 $$
@@ -1259,20 +1277,19 @@ $$
 ```
 
 ---
+
 ## La spirale logarithmique
 
-$$
-r=Ce^{\tfrac{\theta}{\tan(\beta)}}
-$$
+Plutôt que d'utiliser le paramètre $\beta$, les manufacturiers de coinceurs mécaniques utilisent l'angle complémentaire $\gamma$.
 
-Le paramètre $\beta$ correspond à l'angle entre le coinceur et la paroi. 
-
-Les manufacturiers utilisent plutôt l'angle complémentaire à $\beta$, noté $\gamma$, pour créer leurs coinceurs.
 $$
 \begin{aligned}
 \tan(\beta) &= \tan\left(\frac{\pi}{2}-\gamma\right) = \dfrac{1}{\tan(\gamma)}
 \end{aligned}
 $$
+
+--
+
 La spirale logarithmique est donc donnée par:
 $$
 \begin{aligned}
@@ -1280,9 +1297,10 @@ r &= Ce^{\tfrac{\theta}{\tan(\beta)}} = Ce^{\tan(\gamma)\cdot\theta}
 \end{aligned}
 $$
 
-Le paramètre $\gamma$ contrôle "l'ouverture" de la spirale logarithmique et permet de modifier la gamme de largeur du coinceur mécanique.
+Le paramètre $\gamma$ contrôle « l'ouverture » de la spirale logarithmique et permet de modifier la gamme de largeur du coinceur mécanique.
 
 ---
+name: ouverture-coinceur-mecanique
 
 ## L'ouverture du coinceur mécanique
 
@@ -1310,6 +1328,29 @@ class:middle
 <iframe src="https://www.geogebra.org/classic/ekhmvsmr?embed" width="800" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
 
 ---
+## Une « ouverture » aussi grande que possible?
+
+--
+
+Plus l'angle $\gamma$ est grand, plus la gamme de largeurs de failles dans lesquelles nous pouvons installer le coinceur est grande.
+
+--
+
+#### Mais y-a-t'il une limite?
+
+---
+
+template: ouverture-coinceur-mecanique
+
+---
+
+## Une ouverture aussi grande que possible?
+
+Plus l'angle $\gamma$ est grand, plus la gamme de largeurs de failles dans lesquelles nous pouvons installer le coinceur est grande.
+
+#### Mais y-a-t'il une limite? OUI!
+
+--
 
 Pour que le coinceur reste en place, il faut que l'inégalité suivante soit respectée.
 $$
@@ -1320,19 +1361,9 @@ $$
 \end{aligned}
 $$
 
-La force normale produite par le coinceur est donnée par:
-$$
-\begin{aligned}
-N &= \dfrac{F}{2\cot(\beta)} = \dfrac{F}{2\tan(\gamma)}
-\end{aligned}
-$$
+--
 
-En pratique, les manufacturiers utilisent des coinceurs à came avec un angle $\gamma$ d'environ $14^{\circ}$. Dans cette situation, la force normale est donnée par:
-$$
-\begin{aligned}
-N &= \dfrac{F}{2\tan(\gamma)} = \dfrac{F}{2\tan(14^{\circ})} \approx 2F
-\end{aligned}
-$$
+En pratique, les manufacturiers utilisent des coinceurs à came avec un angle $\gamma$ d'environ $14^{\circ}$.
 
 ---
 class:middle, center, inverse
