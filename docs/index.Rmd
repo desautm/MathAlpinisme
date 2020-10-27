@@ -1374,9 +1374,11 @@ class:middle, center, inverse
 
 ## La moulinette
 
+--
+
 - La « moulinette » est une technique principalement utilisée en escalade. 
 
-- Un des équipiers a «ouvert la voie» puis est redescendu.
+- Un des équipiers a « ouvert la voie » puis est redescendu.
 
 - On peut donc utiliser la corde en place pour assurer un coéquipier.
 
@@ -1430,26 +1432,6 @@ Image credit : https://commons.wikimedia.org/wiki/File:Visitors_holding_capstan_
 
 ---
 
-## Définition
-
-- La formule est $T=Fe^{\mu \theta}$. $F$ est la force exercée, $T$ la tension, $\mu$ le coefficient de frottement et $\theta$ l'angle total compris par les tours de corde, mesuré en radians (un tour complet correspond à $\theta=2\pi$). 
-
-- Les hypothèses suivantes doivent être vérifiées pour que la formule fonctionne:
-
---
-
-    - La corde est sur le point de glisser
-    
---
-
-    - La corde n'est pas rigide
-    
---
-
-    - La corde n'est pas élastique `r emo::ji("cry")`
-
----
-
 ```{tikz, echo=FALSE, out.width="50%", fig.align='center', label="cabestan-equation"}
 \begin{tikzpicture}
 
@@ -1482,6 +1464,30 @@ Image credit : https://commons.wikimedia.org/wiki/File:Visitors_holding_capstan_
 
 ---
 
+## Définition
+
+- La formule est $T=Fe^{\mu \theta}$. $F$ est la force exercée, $T$ la tension, $\mu$ le coefficient de frottement et $\theta$ l'angle total compris par les tours de corde, mesuré en radians (un tour complet correspond à $\theta=2\pi$). 
+
+- Les hypothèses suivantes doivent être vérifiées pour que la formule fonctionne:
+
+--
+
+    - La corde est sur le point de glisser
+    
+--
+
+    - La corde n'est pas rigide
+    
+--
+
+    - La corde n'est pas élastique `r emo::ji("cry")`
+
+---
+
+
+
+---
+
 ## L'effet du coefficient de friction
 
 On peut étudier l'effet du coefficient de friction présent dans $T=Fe^{\mu \theta}$. Nous allons simplement afficher les valeurs de $e^{\mu \theta}$.
@@ -1505,6 +1511,31 @@ capstan %>%
   kbl(digits=2, format = "html") %>% 
   add_header_above(c(" ", "Coefficient de friction" = 6))
 ```
+
+--
+
+En observant la table, on comprend la raison pourquoi on voit rarement une [écoute](https://fr.wikipedia.org/wiki/%C3%89coute_%28cordage%29) (un cordage servant à régler l'angle d'une voile) entourée plus de trois tours autour d'un winch.
+
+???
+
+From the table it is evident why one seldom sees a sheet (a rope to the loose side of a sail) wound more than three turns around a winch. The force gain would be extreme besides being counter-productive since there is risk of a riding turn, result being that the sheet will foul, form a knot and not run out when eased (by slacking grip on the tail (free end)).
+
+---
+
+## L'effet du coefficient de friction
+
+### Pour rire un peu, de la part de [Wikipédia](https://en.wikipedia.org/wiki/Capstan_equation) (la traduction est de moi)
+
+> Le facteur de `r capstan[6,6]`
+
+
+
+> For instance, the factor "153,552,935" (5 turns around a capstan with a coefficient of friction of 0.6) means, in theory, that a newborn baby would be capable of holding (not moving) the weight of two USS Nimitz supercarriers (97,000 tons each, but for the baby it would be only a little more than 1 kg).[citation needed] The large number of turns around the capstan combined with such a high friction coefficient mean that very little additional force is necessary to hold such heavy weight in place. The cables necessary to support this weight, as well as the capstan's ability to withstand the crushing force of those cables, are separate considerations.
+
+---
+
+background-image:url(https://media.giphy.com/media/L0Z4qwdwv62cn4haFp/giphy.gif)
+background-size: contain
 
 ---
 
