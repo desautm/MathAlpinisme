@@ -606,46 +606,16 @@ Nous obtenons que $C_2=0$.
 
 Le carré de la vitesse du grimpeur lorsque la corde s'étire est donc $v^2 = 2gy-\dfrac{k}{mL}(y-D_C)^2$.
 
+---
+
+template: chute-etapes-3-bis
 
 ---
 
-.pull-left[
-```{tikz, echo=FALSE, out.width="100%", fig.align='center'}
-\def\grimpeur#1#2#3#4{
-\begin{scope}[shift={#1}, rotate=#2, scale=#4]
-    \tikzstyle{my style}=[line cap=round, rounded corners, line width=3pt, color = #3]
-    \draw[my style] (-1,-2)--(-2,0)--(0,0)--(0,2);
-    \draw[my style] (0,0)--(0,-4);
-    \draw[my style] (2,4)--(2,2)--(0,2)--(-1,4)--(0,6);
-    \draw[my style,fill] (0.5,3) circle (10pt);
-\end{scope} 
-}
+## La fin de la chute
 
-\def\vitesse#1#2#3{
-\draw[dashed] (-2.5,#1) node[left] {$#2$} -- (-1,#1) node[right] {$#3$};
-}
+--
 
-\begin{tikzpicture}
-
-\grimpeur{(-2,0)}{0}{gray!50!white}{0.2};
-\grimpeur{(-2,-3)}{-45}{gray!50!white}{0.2};
-\grimpeur{(-2,-4)}{-45}{gray!50!white}{0.2};
-
-\draw[blue!50!white, line width=2pt] (-2,0)--(-2,-4);
-
-\vitesse{0}{v(0)=0}{0}
-\vitesse{-3}{v(D_C)=\sqrt{2gD_C}}{D_C}
-\vitesse{-4}{v(D_T)=0}{D_T}
-
-\foreach \x / \y  in {-2/0,-2/-3,-2/-4} \draw[red,fill] (\x,\y) circle (1.5pt);
-
-\draw[<-] (-2,-5)--(-2,1.5) node[left] {$y$};
-
-\end{tikzpicture}
-```
-]
-
-.pull-right[
 $$
 \begin{aligned}
 v^2 &= 2gy-\dfrac{k}{mL}(y-D_C)^2 \\
@@ -655,11 +625,17 @@ v^2(D_T) &= 2gD_T-\dfrac{k}{mL}(D_T-D_C)^2 \\
 D_T-D_C &= \sqrt{\dfrac{2gmLD_T}{k}}
 \end{aligned}
 $$
-]
+
 
 ---
 
-Par la loi de Hooke, nous avons donc que la force ressentie par le grimpeur tout en bas de sa chute est donnée par:
+## Retour sur la loi de Hooke
+
+--
+
+La force ressentie par le grimpeur tout en bas de sa chute est donnée par:
+
+--
 
 $$
 \begin{aligned}
@@ -927,6 +903,8 @@ C'est elle qui s'occupe d'instaurer les spécifications pour, entre autres, les 
 
 ## Le test de chute
 
+--
+
 .pull-left[
 ```{tikz, echo=FALSE, out.width="100%", fig.align='center', label="test-chute"}
 \def\poids#1#2#3{
@@ -970,6 +948,8 @@ C'est elle qui s'occupe d'instaurer les spécifications pour, entre autres, les 
 ```
 ]
 
+--
+
 .pull-right[
 
 - L'UIAA utilise une corde de longueur $2,8$ m à laquelle elle attache une masse de $80$ kg (représentant un grimpeur **moyen**).
@@ -994,6 +974,8 @@ C'est elle qui s'occupe d'instaurer les spécifications pour, entre autres, les 
 ---
 
 ## Pourquoi 80 kg?
+
+--
 
 - La force maximale ressentie ne doit pas dépasser $12$ kN. 
 
