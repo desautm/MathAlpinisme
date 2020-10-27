@@ -247,39 +247,43 @@ m\dfrac{d^2y}{dt^2} &amp;= m \dfrac{d}{dt}\underbrace{\left[\dfrac{dy}{dt}\right
 $$
 
 ---
-class: middle
+name: chute-etapes-1
 
-.pull-left[
-&lt;img src="index_files/figure-html/unnamed-chunk-1-1.png" width="100%" style="display: block; margin: auto;" /&gt;
-]
-
-.pull-right[
-$$
-`\begin{aligned}
-m\dfrac{d^2y}{dt^2} &amp;= mg \\
-\dfrac{d^2y}{dt^2} &amp;= g \\
-v\dfrac{dv}{dy} &amp;= g \\
-\int vdv &amp;= \int gdy \\
-\dfrac{v^2}{2} &amp;= gy+C_1 \\
-v^2 &amp;= 2gy+C_2
-\end{aligned}`
-$$
-]
+&lt;img src="index_files/figure-html/chute-etapes-1-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
-class: middle
+name: chute-etapes-2
 
-.pull-left[
-&lt;img src="index_files/figure-html/unnamed-chunk-2-1.png" width="100%" style="display: block; margin: auto;" /&gt;
-]
+&lt;img src="index_files/figure-html/chute-etapes-2-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
-.pull-right[
-- Nous avons : `\(v^2=2gy+C_2\)`.
+---
+name: chute-etapes-3
 
-- Puisque la vitesse du grimpeur au temps initial est nulle, nous avons donc `\(C_2 = 0\)`.
+&lt;img src="index_files/figure-html/chute-etapes-3-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
-- Puisque `\(v^2(y) = 2gy\)`, à la fin de la chute libre nous avons `\(v^2(D_C)=2gD_C\)`.
-]
+---
+template: chute-etapes-2
+
+---
+
+## La chute avant l'étirement de la corde
+
+- L'énergie potentielle du grimpeur est `\(E_p=mgh\)` où `\(h\)` est la hauteur, dans ce cas-ci `\(D_C\)`.
+
+- Lorsque la corde commence à s'étirer l'énergie potentielle est transformée en énergie cinétique `\(E_c=\frac{1}{2}mv^2\)`.
+
+- Les deux énergies sont égales au début de l'étirement `\(E_p=E_c\)`.
+
+- Nous avons `\(mgD_C=\frac{1}{2}mv^2\)` ce qui implique `\(v^2=2gD_C\)` ou `\(v=\sqrt{2gD_C}\)`.
+
+---
+
+&lt;img src="index_files/figure-html/chute-etapes-2-bis-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+name: chute-etapes-3-bis
+
+&lt;img src="index_files/figure-html/chute-etapes-3-bis-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -289,18 +293,16 @@ class: middle
 
 À partir du moment où la corde commence à se tendre, une seconde force entre en jeu, la force de Hooke. Puisque le mouvement se fait vers le bas, la force de Hooke va être dans la direction inverse, pour ralentir le mouvement du grimpeur. L'équation différentielle sera donc 
 `$$mv\dfrac{dv}{dy} = mg-\dfrac{k}{L}(y-D_C)$$`
+---
+
+template: chute-etapes-3-bis
 
 ---
 
-## Résolution de l'équation différentielle pour la chute retenue par la corde
+## La chute après l'étirement de la corde
 
 --
 
-.pull-left[
-&lt;img src="index_files/figure-html/modelisation-chute-2-1.png" width="100%" style="display: block; margin: auto;" /&gt;
-]
-
-.pull-right[
 $$
 `\begin{aligned}
 mv\dfrac{dv}{dy} &amp;= mg-\dfrac{k}{L}(y-D_C) \\
@@ -309,33 +311,23 @@ mv\dfrac{dv}{dy} &amp;= mg-\dfrac{k}{L}(y-D_C) \\
 v^2 &amp;= 2gy-\dfrac{k}{mL}(y-D_C)^2+C_2
 \end{aligned}`
 $$
-]
----
-
-## La constante d'intégration
-
 --
 
 La condition initiale de ce problème correspond à la vitesse du grimpeur après sa chute libre, c'est-à-dire lorsqu'il se trouve à `\(D_C\)`.
 
-$$
-`\begin{aligned}
-v^2(D_C) &amp;= 2gD_C-\dfrac{k}{mL}(D_C-D_C)^2+C_2 \\
-2gD_C &amp;= 2gD_C+C_2 \\
-C_2 &amp;= 0
-\end{aligned}`
-$$
+--
 
-Le carré de la vitesse du grimpeur lorsque la corde s'étire est donc `\(v^2 = 2gy-\dfrac{k}{mL}(y-D_C)^2\)`.
-
----
-
-Nous voulons maintenant évaluer cette vitesse lorsque `\(y=D_T\)`. À cet endroit, la vitesse est nulle, car la chute du grimpeur est terminée et donc:
+Nous obtenons que `\(C_2=0\)`.
 
 --
 
+Le carré de la vitesse du grimpeur lorsque la corde s'étire est donc `\(v^2 = 2gy-\dfrac{k}{mL}(y-D_C)^2\)`.
+
+
+---
+
 .pull-left[
-&lt;img src="index_files/figure-html/modelisation-chute-3-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-1-1.png" width="100%" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[

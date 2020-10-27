@@ -404,10 +404,9 @@ m\dfrac{d^2y}{dt^2} &= m \dfrac{d}{dt}\underbrace{\left[\dfrac{dy}{dt}\right]}_{
 $$
 
 ---
-class: middle
+name: chute-etapes-1
 
-.pull-left[
-```{tikz, echo=FALSE, out.width="100%", fig.align='center'}
+```{tikz, echo=FALSE, out.width="65%", fig.align='center',label="chute-etapes-1"}
 \def\grimpeur#1#2#3#4{
 \begin{scope}[shift={#1}, rotate=#2, scale=#4]
     \tikzstyle{my style}=[line cap=round, rounded corners, line width=3pt, color = #3]
@@ -419,44 +418,196 @@ class: middle
 }
 
 \def\vitesse#1#2#3{
-\draw[dashed] (-2.5,#1) node[left] {$#2$} -- (-1,#1) node[right] {$#3$};
+\draw[dashed] (-2.5,#1) node[left] {$#2$} -- (-0.75,#1) node[right] {$#3$};
 }
 
 \begin{tikzpicture}
+\draw[white] (-5.5,-5) rectangle (0,1.75);
+\grimpeur{(-2,0)}{0}{black}{0.2}
+\vitesse{0}{v(0)=0}{0}
+\foreach \x / \y  in {-2/0} \draw[red,fill] (\x,\y) circle (1.5pt);
+\draw[<-] (-1,-5)--(-1,1.5) node[left] {$y$};
+\end{tikzpicture}
+```
 
-\grimpeur{(-2,0)}{0}{gray!50!white}{0.2};
+---
+name: chute-etapes-2
+
+```{tikz, echo=FALSE, out.width="65%", fig.align='center',label="chute-etapes-2"}
+\def\grimpeur#1#2#3#4{
+\begin{scope}[shift={#1}, rotate=#2, scale=#4]
+    \tikzstyle{my style}=[line cap=round, rounded corners, line width=3pt, color = #3]
+    \draw[my style] (-1,-2)--(-2,0)--(0,0)--(0,2);
+    \draw[my style] (0,0)--(0,-4);
+    \draw[my style] (2,4)--(2,2)--(0,2)--(-1,4)--(0,6);
+    \draw[my style,fill] (0.5,3) circle (10pt);
+\end{scope} 
+}
+
+\def\vitesse#1#2#3{
+\draw[dashed] (-2.5,#1) node[left] {$#2$} -- (-0.75,#1) node[right] {$#3$};
+}
+
+\begin{tikzpicture}
+\draw[white] (-5.5,-5) rectangle (0,1.75);
+\grimpeur{(-2,0)}{0}{gray!50!white}{0.2}
+\grimpeur{(-2,-3)}{-45}{black}{0.2};
+\vitesse{0}{v(0)=0}{0}
+\vitesse{-3}{v(D_C)=?}{D_C}
+\draw[blue!50!white, line width=2pt] (-2,0)--(-2,-3);
+\foreach \x / \y  in {-2/0,-2/-3} \draw[red,fill] (\x,\y) circle (1.5pt);
+\draw[<-] (-1,-5)--(-1,1.5) node[left] {$y$};
+\end{tikzpicture}
+```
+
+---
+name: chute-etapes-3
+
+```{tikz, echo=FALSE, out.width="65%", fig.align='center',label="chute-etapes-3"}
+\def\grimpeur#1#2#3#4{
+\begin{scope}[shift={#1}, rotate=#2, scale=#4]
+    \tikzstyle{my style}=[line cap=round, rounded corners, line width=3pt, color = #3]
+    \draw[my style] (-1,-2)--(-2,0)--(0,0)--(0,2);
+    \draw[my style] (0,0)--(0,-4);
+    \draw[my style] (2,4)--(2,2)--(0,2)--(-1,4)--(0,6);
+    \draw[my style,fill] (0.5,3) circle (10pt);
+\end{scope} 
+}
+
+\def\vitesse#1#2#3{
+\draw[dashed] (-2.5,#1) node[left] {$#2$} -- (-0.75,#1) node[right] {$#3$};
+}
+
+\begin{tikzpicture}
+\draw[white] (-5.5,-5) rectangle (0,1.75);
+\grimpeur{(-2,0)}{0}{gray!50!white}{0.2}
 \grimpeur{(-2,-3)}{-45}{gray!50!white}{0.2};
-\grimpeur{(-2,-4)}{-45}{gray!50!white}{0.2};
-
-\draw[blue!50!white, line width=2pt] (-2,0)--(-2,-4);
-
+\grimpeur{(-2,-4)}{-45}{black}{0.2};
 \vitesse{0}{v(0)=0}{0}
 \vitesse{-3}{v(D_C)=?}{D_C}
 \vitesse{-4}{v(D_T)=0}{D_T}
-
+\draw[blue!50!white, line width=2pt] (-2,0)--(-2,-4);
 \foreach \x / \y  in {-2/0,-2/-3,-2/-4} \draw[red,fill] (\x,\y) circle (1.5pt);
-
-\draw[<-] (-2,-5)--(-2,1.5) node[left] {$y$};
-
+\draw[<-] (-1,-5)--(-1,1.5) node[left] {$y$};
 \end{tikzpicture}
 ```
-]
-
-.pull-right[
-$$
-\begin{aligned}
-m\dfrac{d^2y}{dt^2} &= mg \\
-\dfrac{d^2y}{dt^2} &= g \\
-v\dfrac{dv}{dy} &= g \\
-\int vdv &= \int gdy \\
-\dfrac{v^2}{2} &= gy+C_1 \\
-v^2 &= 2gy+C_2
-\end{aligned}
-$$
-]
 
 ---
-class: middle
+template: chute-etapes-2
+
+---
+
+## La chute avant l'étirement de la corde
+
+- L'énergie potentielle du grimpeur est $E_p=mgh$ où $h$ est la hauteur, dans ce cas-ci $D_C$.
+
+- Lorsque la corde commence à s'étirer l'énergie potentielle est transformée en énergie cinétique $E_c=\frac{1}{2}mv^2$.
+
+- Les deux énergies sont égales au début de l'étirement $E_p=E_c$.
+
+- Nous avons $mgD_C=\frac{1}{2}mv^2$ ce qui implique $v^2=2gD_C$ ou $v=\sqrt{2gD_C}$.
+
+---
+
+```{tikz, echo=FALSE, out.width="65%", fig.align='center',label="chute-etapes-2-bis"}
+\def\grimpeur#1#2#3#4{
+\begin{scope}[shift={#1}, rotate=#2, scale=#4]
+    \tikzstyle{my style}=[line cap=round, rounded corners, line width=3pt, color = #3]
+    \draw[my style] (-1,-2)--(-2,0)--(0,0)--(0,2);
+    \draw[my style] (0,0)--(0,-4);
+    \draw[my style] (2,4)--(2,2)--(0,2)--(-1,4)--(0,6);
+    \draw[my style,fill] (0.5,3) circle (10pt);
+\end{scope} 
+}
+
+\def\vitesse#1#2#3{
+\draw[dashed] (-2.5,#1) node[left] {$#2$} -- (-0.75,#1) node[right] {$#3$};
+}
+
+\begin{tikzpicture}
+\draw[white] (-5.5,-5) rectangle (0,1.75);
+\grimpeur{(-2,0)}{0}{gray!50!white}{0.2}
+\grimpeur{(-2,-3)}{-45}{black}{0.2};
+\vitesse{0}{v(0)=0}{0}
+\vitesse{-3}{v(D_C)=\sqrt{2gD_C}}{D_C}
+\draw[blue!50!white, line width=2pt] (-2,0)--(-2,-3);
+\foreach \x / \y  in {-2/0,-2/-3} \draw[red,fill] (\x,\y) circle (1.5pt);
+\draw[<-] (-1,-5)--(-1,1.5) node[left] {$y$};
+\end{tikzpicture}
+```
+
+---
+name: chute-etapes-3-bis
+
+```{tikz, echo=FALSE, out.width="65%", fig.align='center',label="chute-etapes-3-bis"}
+\def\grimpeur#1#2#3#4{
+\begin{scope}[shift={#1}, rotate=#2, scale=#4]
+    \tikzstyle{my style}=[line cap=round, rounded corners, line width=3pt, color = #3]
+    \draw[my style] (-1,-2)--(-2,0)--(0,0)--(0,2);
+    \draw[my style] (0,0)--(0,-4);
+    \draw[my style] (2,4)--(2,2)--(0,2)--(-1,4)--(0,6);
+    \draw[my style,fill] (0.5,3) circle (10pt);
+\end{scope} 
+}
+
+\def\vitesse#1#2#3{
+\draw[dashed] (-2.5,#1) node[left] {$#2$} -- (-0.75,#1) node[right] {$#3$};
+}
+
+\begin{tikzpicture}
+\draw[white] (-5.5,-5) rectangle (0,1.75);
+\grimpeur{(-2,0)}{0}{gray!50!white}{0.2}
+\grimpeur{(-2,-3)}{-45}{gray!50!white}{0.2};
+\grimpeur{(-2,-4)}{-45}{black}{0.2};
+\vitesse{0}{v(0)=0}{0}
+\vitesse{-3}{v(D_C)=\sqrt{2gD_C}}{D_C}
+\vitesse{-4}{v(D_T)=0}{D_T}
+\draw[blue!50!white, line width=2pt] (-2,0)--(-2,-4);
+\foreach \x / \y  in {-2/0,-2/-3,-2/-4} \draw[red,fill] (\x,\y) circle (1.5pt);
+\draw[<-] (-1,-5)--(-1,1.5) node[left] {$y$};
+\end{tikzpicture}
+```
+
+---
+
+## Écriture de l'équation différentielle pour la chute retenue par la corde
+
+--
+
+À partir du moment où la corde commence à se tendre, une seconde force entre en jeu, la force de Hooke. Puisque le mouvement se fait vers le bas, la force de Hooke va être dans la direction inverse, pour ralentir le mouvement du grimpeur. L'équation différentielle sera donc 
+$$mv\dfrac{dv}{dy} = mg-\dfrac{k}{L}(y-D_C)$$
+---
+
+template: chute-etapes-3-bis
+
+---
+
+## La chute après l'étirement de la corde
+
+--
+
+$$
+\begin{aligned}
+mv\dfrac{dv}{dy} &= mg-\dfrac{k}{L}(y-D_C) \\
+\int vdv &= \int\left(g-\dfrac{k}{mL}(y-D_C)\right)dy \\
+\dfrac{v^2}{2} &= gy-\dfrac{k}{2mL}(y-D_C)^2+C_1 \\
+v^2 &= 2gy-\dfrac{k}{mL}(y-D_C)^2+C_2
+\end{aligned}
+$$
+--
+
+La condition initiale de ce problème correspond à la vitesse du grimpeur après sa chute libre, c'est-à-dire lorsqu'il se trouve à $D_C$.
+
+--
+
+Nous obtenons que $C_2=0$.
+
+--
+
+Le carré de la vitesse du grimpeur lorsque la corde s'étire est donc $v^2 = 2gy-\dfrac{k}{mL}(y-D_C)^2$.
+
+
+---
 
 .pull-left[
 ```{tikz, echo=FALSE, out.width="100%", fig.align='center'}
@@ -489,131 +640,6 @@ class: middle
 \foreach \x / \y  in {-2/0,-2/-3,-2/-4} \draw[red,fill] (\x,\y) circle (1.5pt);
 
 \draw[<-] (-2,-5)--(-2,1.5) node[left] {$y$};
-
-\end{tikzpicture}
-```
-]
-
-.pull-right[
-- Nous avons : $v^2=2gy+C_2$.
-
-- Puisque la vitesse du grimpeur au temps initial est nulle, nous avons donc $C_2 = 0$.
-
-- Puisque $v^2(y) = 2gy$, à la fin de la chute libre nous avons $v^2(D_C)=2gD_C$.
-]
-
----
-
-## Écriture de l'équation différentielle pour la chute retenue par la corde
-
---
-
-À partir du moment où la corde commence à se tendre, une seconde force entre en jeu, la force de Hooke. Puisque le mouvement se fait vers le bas, la force de Hooke va être dans la direction inverse, pour ralentir le mouvement du grimpeur. L'équation différentielle sera donc 
-$$mv\dfrac{dv}{dy} = mg-\dfrac{k}{L}(y-D_C)$$
-
----
-
-## Résolution de l'équation différentielle pour la chute retenue par la corde
-
---
-
-.pull-left[
-```{tikz, echo=FALSE, out.width="100%", fig.align='center', label="modelisation-chute-2"}
-\def\grimpeur#1#2#3#4{
-\begin{scope}[shift={#1}, rotate=#2, scale=#4]
-    \tikzstyle{my style}=[line cap=round, rounded corners, line width=3pt, color = #3]
-    \draw[my style] (-1,-2)--(-2,0)--(0,0)--(0,2);
-    \draw[my style] (0,0)--(0,-4);
-    \draw[my style] (2,4)--(2,2)--(0,2)--(-1,4)--(0,6);
-    \draw[my style,fill] (0.5,3) circle (10pt);
-\end{scope} 
-}
-
-\begin{tikzpicture}
-
-\draw[->] (-1,0)--(1,0) node[below] {$x$};
-\draw[<-] (0,-5)--(0,1) node[left] {$y$};
-
-\draw (-0.1,-3) node[left] {$D_C$} --(0.1,-3);
-\draw (-0.1,-4) node[left] {$D_T$} --(0.1,-4);
-
-\draw[<->] (0.4,-4)--(0.4,-3) node[midway,right] {Étirement};
-
-\grimpeur{(-2,0)}{0}{gray!25!white}{0.2};
-\grimpeur{(-2,-3)}{-45}{gray}{0.2};
-\grimpeur{(-2,-4)}{-45}{gray}{0.2};
-
-\draw[blue, line width=2pt, opacity = 0.5] (-2,0)--(-2,-4);
-
-\foreach \x / \y  in {-2/0,-2/-3,-2/-4} \draw[red,fill] (\x,\y) circle (1.5pt);
-
-\end{tikzpicture}
-```
-]
-
-.pull-right[
-$$
-\begin{aligned}
-mv\dfrac{dv}{dy} &= mg-\dfrac{k}{L}(y-D_C) \\
-\int vdv &= \int\left(g-\dfrac{k}{mL}(y-D_C)\right)dy \\
-\dfrac{v^2}{2} &= gy-\dfrac{k}{2mL}(y-D_C)^2+C_1 \\
-v^2 &= 2gy-\dfrac{k}{mL}(y-D_C)^2+C_2
-\end{aligned}
-$$
-]
----
-
-## La constante d'intégration
-
---
-
-La condition initiale de ce problème correspond à la vitesse du grimpeur après sa chute libre, c'est-à-dire lorsqu'il se trouve à $D_C$.
-
-$$
-\begin{aligned}
-v^2(D_C) &= 2gD_C-\dfrac{k}{mL}(D_C-D_C)^2+C_2 \\
-2gD_C &= 2gD_C+C_2 \\
-C_2 &= 0
-\end{aligned}
-$$
-
-Le carré de la vitesse du grimpeur lorsque la corde s'étire est donc $v^2 = 2gy-\dfrac{k}{mL}(y-D_C)^2$.
-
----
-
-Nous voulons maintenant évaluer cette vitesse lorsque $y=D_T$. À cet endroit, la vitesse est nulle, car la chute du grimpeur est terminée et donc:
-
---
-
-.pull-left[
-```{tikz, echo=FALSE, out.width="100%", fig.align='center', label="modelisation-chute-3"}
-\def\grimpeur#1#2#3#4{
-\begin{scope}[shift={#1}, rotate=#2, scale=#4]
-    \tikzstyle{my style}=[line cap=round, rounded corners, line width=3pt, color = #3]
-    \draw[my style] (-1,-2)--(-2,0)--(0,0)--(0,2);
-    \draw[my style] (0,0)--(0,-4);
-    \draw[my style] (2,4)--(2,2)--(0,2)--(-1,4)--(0,6);
-    \draw[my style,fill] (0.5,3) circle (10pt);
-\end{scope} 
-}
-
-\begin{tikzpicture}
-
-\draw[->] (-1,0)--(1,0) node[below] {$x$};
-\draw[<-] (0,-5)--(0,1) node[left] {$y$};
-
-\draw (-0.1,-3) node[left] {$D_C$} --(0.1,-3);
-\draw (-0.1,-4) node[left] {$D_T$} --(0.1,-4);
-
-\draw[<->] (0.4,-4)--(0.4,-3) node[midway,right] {Étirement};
-
-\grimpeur{(-2,0)}{0}{gray}{0.2};
-\grimpeur{(-2,-3)}{-45}{gray}{0.2};
-\grimpeur{(-2,-4)}{-45}{black}{0.2};
-
-\draw[blue, line width=2pt, opacity = 0.5] (-2,0)--(-2,-4);
-
-\foreach \x / \y  in {-2/0,-2/-3,-2/-4} \draw[red,fill] (\x,\y) circle (1.5pt);
 
 \end{tikzpicture}
 ```
