@@ -31,6 +31,10 @@ xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "tachyons"))
 xaringanExtra::use_broadcast()
 ```
 
+```{r share-again, echo=FALSE}
+xaringanExtra::use_share_again()
+```
+
 class: inverse, middle
 
 ## *AVERTISSEMENT*
