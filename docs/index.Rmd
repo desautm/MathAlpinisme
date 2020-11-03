@@ -853,6 +853,10 @@ class: inverse, center, middle
 
 ## Facteur de chute de 0
 
+--
+
+#### *quand Marc-André grimpe...*
+
 ---
 
 ```{tikz, echo=FALSE, out.width="50%", fig.align='center', label="facteur-chute-0"}
@@ -933,6 +937,7 @@ C'est elle qui s'occupe d'instaurer les spécifications pour, entre autres, les 
 
 \poids{(0,-2.8)}{0.25}{gray!50!white}
 \poids{(1,2.3)}{0.25}{gray!50!white}
+\node[left] at (0.25,2.3) {80 kg};
 
 \draw[blue, line width=1.5pt] (0,0)--(0,-2.8);
 \parabola{0}{0}{0.5}{-0.25}{1}{2.3}
@@ -959,7 +964,7 @@ C'est elle qui s'occupe d'instaurer les spécifications pour, entre autres, les 
 
 - L'UIAA utilise une corde de longueur $2,8$ m à laquelle elle attache une masse de $80$ kg (représentant un grimpeur **moyen**).
 
-- Elle place la masse à une hauteur de $2,3$ m pour ensuite la faire tomber d'une hauteur totale de $4,8$ m. 
+- Elle fait tomber la masse d'une hauteur totale de $4,8$ m. 
 
 - Ceci lui permet d'obtenir un facteur de chute d'environ `r 4.8/2.8`.
 ]
@@ -995,7 +1000,7 @@ $$
 F &= ma \\
 12\ 000 &= m\cdot (15g) \\
 m &= \frac{12\ 000}{15g} \\
-&\approx 81,5\ kg
+&= 80\ kg \quad (\text{en prenant } g=10 \ m\cdot s^{-2})
 \end{aligned}
 $$
 
@@ -1012,9 +1017,13 @@ class:middle, center, inverse
 
 .pull-left[
 Un coinceur mécanique, ou coinceur à came, est un équipement de protection pour
-l’escalade ou l’alpinisme. Il consiste en deux, trois, ou quatre cames montées sur un
+l’escalade ou l’alpinisme. 
+
+Il consiste en deux, trois, ou quatre cames montées sur un
 axe commun ou deux axes adjacents, de manière que tirer sur l’axe force les cames
-à s’écarter. Il utilise le principe de l’arc-boutement.
+à s’écarter. 
+
+Il utilise le principe de l’arc-boutement.
 ]
 
 .pull-right[
@@ -1079,11 +1088,11 @@ paroi soutient le grimpeur.
 \draw[thick,dashed] (-1.9,-0.34)--(0,0)--(1.9,-0.34);
 
 
-\draw[->,very thick] (-1.9,-0.34)--(-1.9,0.66) node[midway,left] {$F_t$};
+\draw[->,very thick] (-1.9,-0.34)--(-1.9,0.66) node[midway,left] {$F_f$};
 \draw[->,very thick] (-1.9,-0.34)--(-2.9,-0.34) node[midway,below] {$F_n$};
 \draw[->,very thick] (-1.9,-0.34)--(-0.9,-0.34) node[midway,below] {$N$};
 
-\draw[->,very thick] (1.9,-0.34)--(1.9,0.66) node[midway,right] {$F_t$};
+\draw[->,very thick] (1.9,-0.34)--(1.9,0.66) node[midway,right] {$F_f$};
 \draw[->,very thick] (1.9,-0.34)--(2.9,-0.34) node[midway,below] {$F_n$};
 \draw[->,very thick] (1.9,-0.34)--(0.9,-0.34) node[midway,below] {$N$};
 
@@ -1101,7 +1110,7 @@ paroi soutient le grimpeur.
 Pour que le système soit en équilibre, il faut que la somme de toutes ces forces soit nulle.
 $$
 \begin{aligned}
-2F_t &= F \\
+2F_f &= F \\
 F_n &= N
 \end{aligned}
 $$
@@ -1121,7 +1130,7 @@ class: middle
 
 \draw[thick] (1.55,-1.55)--(3,-3) node[pos=0.75, below left] {$F$}; 
 \draw[->,thick] (1.55,-1.55)--(3,-1.55) node[midway, above] {$F_n$};
-\draw[thick] (3,-1.55)--(3,-3) node[midway, right] {$F_t$};
+\draw[thick] (3,-1.55)--(3,-3) node[midway, right] {$F_f$};
 
 \draw[->,thick] (1.55,-1.55) --({0.5*(1.55+3)},{0.5*(-1.55-3)});
 \draw[->,thick] (3,-1.55) --({0.5*(3+3)},{0.5*(-3-1.55)});
@@ -1141,16 +1150,16 @@ class: middle
 La force $F$ peut être décomposée en une partie normale $F_n$ et une partie tangentielle $F_t$ à la paroi à l'endroit où le coinceur touche la paroi.
 $$
 \begin{aligned}
-\tan(\beta) &= \dfrac{F_n}{F_t} \\
-F_t &= F_n\cot(\beta)
+\tan(\beta) &= \dfrac{F_n}{F_f} \\
+F_f &= \frac{F_n}{\tan(\beta)}
 \end{aligned}
 $$
 
 - Le coinceur reste en place en raison du coefficient de friction de la paroi, noté $\mu$.
 
-- Il suffit que $F_t<\mu F_n$ pour que le coinceur ne glisse pas.
+- Si $F_f<\mu F_n$ alors le coinceur ne glisse pas.
 
-- Ceci implique que $F_n\cot(\beta)<\mu F_n$ et donc que $\cot(\beta)<\mu$.
+- Ceci implique que $\frac{F_n}{\tan(\beta)}<\mu F_n$ et donc que $\frac{1}{\tan(\beta)}<\mu$.
 
 ]
 
@@ -1158,11 +1167,13 @@ $$
 
 ## Le coefficient de friction
 
-Le coinceur reste en place si $\cot(\beta)<\mu$. 
+Le coinceur reste en place si $\frac{1}{\tan(\beta)}<\mu$. 
 
+--
 
-Puisque nous allons travailler avec des tangentes, il est préférable d'utiliser l'inégalité $\tan(\beta)>\frac{1}{\mu}$.
+Autrement dit, il faut que $\tan(\beta)>\frac{1}{\mu}$.
 
+--
 
 Puisque $\tan(\beta)$ doit toujours être strictement supérieur à $\frac{1}{\mu}$, il semble indiqué d'obliger l'angle $\beta$ à rester constant, c'est-à-dire $\tan(\beta)=K$. 
 
@@ -1360,7 +1371,6 @@ Plus l'angle $\gamma$ est grand, plus la gamme de largeurs de failles dans lesqu
 Pour que le coinceur reste en place, il faut que l'inégalité suivante soit respectée.
 $$
 \begin{aligned}
-\cot(\beta) &< \mu \\
 \dfrac{1}{\tan(\beta)} &< \mu \\
 \tan(\gamma) &< \mu
 \end{aligned}
@@ -1586,7 +1596,7 @@ Une boule de 65 livres (`r 65/2.205` kg) suspendue avec $4 \frac{1}{2}$ tours à
 
 [Harvard Natural Sciences Lecture Demonstrations](https://sciencedemonstrations.fas.harvard.edu/presentations/rope-friction-around-pole)
 
-Une boule de 100 livres (`r 100/2.205` kg) suspendue avec $4 \frac{1}{2}$ tours.
+Un haltère de 100 livres (`r 100/2.205` kg) suspendu avec $4 \frac{1}{2}$ tours.
 
 .center[
 ![](https://static.projects.iq.harvard.edu/files/styles/os_files_medium/public/science-demonstrations/files/100lb.jpg?m=1432049361&itok=oCuBvd-f)]

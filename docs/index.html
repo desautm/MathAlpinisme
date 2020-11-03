@@ -422,6 +422,10 @@ class: inverse, center, middle
 
 ## Facteur de chute de 0
 
+--
+
+#### *quand Marc-André grimpe...*
+
 ---
 
 &lt;img src="index_files/figure-html/facteur-chute-0-1.png" width="50%" style="display: block; margin: auto;" /&gt;
@@ -457,7 +461,7 @@ C'est elle qui s'occupe d'instaurer les spécifications pour, entre autres, les 
 
 - L'UIAA utilise une corde de longueur `\(2,8\)` m à laquelle elle attache une masse de `\(80\)` kg (représentant un grimpeur **moyen**).
 
-- Elle place la masse à une hauteur de `\(2,3\)` m pour ensuite la faire tomber d'une hauteur totale de `\(4,8\)` m. 
+- Elle fait tomber la masse d'une hauteur totale de `\(4,8\)` m. 
 
 - Ceci lui permet d'obtenir un facteur de chute d'environ 1.7142857.
 ]
@@ -493,7 +497,7 @@ $$
 F &amp;= ma \\
 12\ 000 &amp;= m\cdot (15g) \\
 m &amp;= \frac{12\ 000}{15g} \\
-&amp;\approx 81,5\ kg
+&amp;= 80\ kg \quad (\text{en prenant } g=10 \ m\cdot s^{-2})
 \end{aligned}`
 $$
 
@@ -510,9 +514,13 @@ class:middle, center, inverse
 
 .pull-left[
 Un coinceur mécanique, ou coinceur à came, est un équipement de protection pour
-l’escalade ou l’alpinisme. Il consiste en deux, trois, ou quatre cames montées sur un
+l’escalade ou l’alpinisme. 
+
+Il consiste en deux, trois, ou quatre cames montées sur un
 axe commun ou deux axes adjacents, de manière que tirer sur l’axe force les cames
-à s’écarter. Il utilise le principe de l’arc-boutement.
+à s’écarter. 
+
+Il utilise le principe de l’arc-boutement.
 ]
 
 .pull-right[
@@ -568,7 +576,7 @@ paroi soutient le grimpeur.
 Pour que le système soit en équilibre, il faut que la somme de toutes ces forces soit nulle.
 $$
 `\begin{aligned}
-2F_t &amp;= F \\
+2F_f &amp;= F \\
 F_n &amp;= N
 \end{aligned}`
 $$
@@ -587,16 +595,16 @@ class: middle
 La force `\(F\)` peut être décomposée en une partie normale `\(F_n\)` et une partie tangentielle `\(F_t\)` à la paroi à l'endroit où le coinceur touche la paroi.
 $$
 `\begin{aligned}
-\tan(\beta) &amp;= \dfrac{F_n}{F_t} \\
-F_t &amp;= F_n\cot(\beta)
+\tan(\beta) &amp;= \dfrac{F_n}{F_f} \\
+F_f &amp;= \frac{F_n}{\tan(\beta)}
 \end{aligned}`
 $$
 
 - Le coinceur reste en place en raison du coefficient de friction de la paroi, noté `\(\mu\)`.
 
-- Il suffit que `\(F_t&lt;\mu F_n\)` pour que le coinceur ne glisse pas.
+- Si `\(F_f&lt;\mu F_n\)` alors le coinceur ne glisse pas.
 
-- Ceci implique que `\(F_n\cot(\beta)&lt;\mu F_n\)` et donc que `\(\cot(\beta)&lt;\mu\)`.
+- Ceci implique que `\(\frac{F_n}{\tan(\beta)}&lt;\mu F_n\)` et donc que `\(\frac{1}{\tan(\beta)}&lt;\mu\)`.
 
 ]
 
@@ -604,11 +612,13 @@ $$
 
 ## Le coefficient de friction
 
-Le coinceur reste en place si `\(\cot(\beta)&lt;\mu\)`. 
+Le coinceur reste en place si `\(\frac{1}{\tan(\beta)}&lt;\mu\)`. 
 
+--
 
-Puisque nous allons travailler avec des tangentes, il est préférable d'utiliser l'inégalité `\(\tan(\beta)&gt;\frac{1}{\mu}\)`.
+Autrement dit, il faut que `\(\tan(\beta)&gt;\frac{1}{\mu}\)`.
 
+--
 
 Puisque `\(\tan(\beta)\)` doit toujours être strictement supérieur à `\(\frac{1}{\mu}\)`, il semble indiqué d'obliger l'angle `\(\beta\)` à rester constant, c'est-à-dire `\(\tan(\beta)=K\)`. 
 
@@ -758,7 +768,6 @@ Plus l'angle `\(\gamma\)` est grand, plus la gamme de largeurs de failles dans l
 Pour que le coinceur reste en place, il faut que l'inégalité suivante soit respectée.
 $$
 `\begin{aligned}
-\cot(\beta) &amp;&lt; \mu \\
 \dfrac{1}{\tan(\beta)} &amp;&lt; \mu \\
 \tan(\gamma) &amp;&lt; \mu
 \end{aligned}`
@@ -1012,7 +1021,7 @@ Une boule de 65 livres (29.478458 kg) suspendue avec `\(4 \frac{1}{2}\)` tours �
 
 [Harvard Natural Sciences Lecture Demonstrations](https://sciencedemonstrations.fas.harvard.edu/presentations/rope-friction-around-pole)
 
-Une boule de 100 livres (45.3514739 kg) suspendue avec `\(4 \frac{1}{2}\)` tours.
+Un haltère de 100 livres (45.3514739 kg) suspendu avec `\(4 \frac{1}{2}\)` tours.
 
 .center[
 ![](https://static.projects.iq.harvard.edu/files/styles/os_files_medium/public/science-demonstrations/files/100lb.jpg?m=1432049361&amp;itok=oCuBvd-f)]
