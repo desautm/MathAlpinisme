@@ -35,7 +35,7 @@ xaringanExtra::use_broadcast()
 xaringanExtra::use_share_again()
 ```
 
-class: inverse, middle
+
 
 ## *AVERTISSEMENT*
 
